@@ -1,0 +1,35 @@
+console.log("乘法表1");
+var c = "";
+for(var a = 1;a < 10; a++){
+    for(var b = 1;b < 10; b++){
+    c += "\t" + a + "*" + b + "=" + a*b;
+    }
+    c += "\n";
+}
+
+console.log("乘法表2");
+var c = "";
+for(var a = 1;a < 10; a++){
+    for(var b = 1;b < 10; b++){
+    c += "\t" + b + "*" + a + "=" + a*b;
+    }
+    c += "\n";
+}
+
+console.log("乘法表3");
+var c = "";
+for(var a = 1;a < 10; a++){
+    for(var b = 1;b <= a; b++){
+    c += "\t" + a + "*" + b + "=" + a*b;
+        }
+        c += "\n";
+    }
+    
+console.log("乘法表4");
+var c = "";
+for(var a = 1;a < 10; a++){
+    for(var b = a;b < 10; b++){
+    c += "\t" + a + "*" + b + "=" + a*b;
+        }
+        c += "\n";
+    }
