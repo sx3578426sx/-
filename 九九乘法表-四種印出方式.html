@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>九九乘法表</title>
+        <style>
+            #title{
+                text-align: center;
+                font-size: 1.5em;
+            }
+
+            h3{
+                text-align: left;
+                background-color: blanchedalmond;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="title">
+            <h1>請看Console或以下範例</h1>
+        </div>
+        <div>
+            <h3>乘法表1</h3>
+            <pre id="x1"></pre>
+            <hr>
+            <h3>乘法表2</h3>
+            <pre id="x2"></pre>
+            <hr>
+            <h3>乘法表3</h3>
+            <pre id="x3"></pre>
+            <hr>
+            <h3>乘法表4</h3>
+            <pre id="x4"></pre>
+        </div>
+        <script>
+    //乘法表1
+        let x1 = "";
+        for(var a = 1;a < 10; a++){
+            for(var b = 1;b < 10; b++){
+                x1 += "\t" + a + "*" + b + "=" + a*b;
+            }
+            x1 += "\n";
+        }
+        console.log("乘法表1");
+        console.log(x1);
+        document.getElementById("x1").innerHTML = x1;
+
+    //乘法表2
+        let x2 = "";
+        for(var a = 1;a < 10; a++){
+            for(var b = 1;b < 10; b++){
+                x2 += "\t" + b + "*" + a + "=" + a*b;
+            }
+            x2 += "\n";
+        }
+        console.log("乘法表2");
+        console.log(x2);
+        document.getElementById("x2").innerHTML = x2;
+    //乘法表3
+        let x3 = "";
+        for(var a = 1;a < 10; a++){
+            for(var b = 1;b <= a; b++){
+                x3 += "\t" + a + "*" + b + "=" + a*b;
+            }
+            x3 += "\n";
+        }
+        console.log("乘法表3");
+        console.log(x3);
+        document.getElementById("x3").innerHTML = x3;
+    //乘法表4
+        let x4 = "";
+        for(var a = 1;a < 10; a++){
+            for(var b = a;b < 10; b++){
+                x4 += "\t" + a + "*" + b + "=" + a*b;
+            }
+            x4 += "\n";
+        }
+        console.log("乘法表4");
+        console.log(x4);
+        document.getElementById("x4").innerHTML = x4;
+        </script>
+    </body>
+</html>
