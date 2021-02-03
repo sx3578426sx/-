@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>九九乘法表套用function</title>
+        <style>
+            div{
+                text-align:center;
+            }
+            #title{
+                background-color: orange;
+                font-size: 2em;
+                color:seashell;
+            }
+            #ex {
+                background-color: royalblue;
+                font-size: 30px;
+                color: ffffff;
+                height: auto;
+            }
+            #mid{
+                color: red;
+                font-style: italic;
+                font-size: 3em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="title">
+            <h1>function MT(n1,n2)</h1>
+        </div>
+        <div id="mid">
+            <p>打開Console，輸入「MT(n1,n2)」，即可顯示n1*n2的九九乘法表</p>
+        </div>
+        <div id="ex">
+            <p><b>例：傳了MT(2,3)，印出2*3的乘法表如下：</b></p>
+            <p>2 * 1 = 2　　2 * 2 = 4　　2 * 3 = 6</p>
+            <p>3 * 1 = 3　　3 * 2 = 6　　3 * 3 = 9</p>
+        </div>
+        
+        <script>
+        function MT(n1,n2){
+            let i = "";
+            let j = "";
+                if(n1 > n2){
+                    for(var a = n1; a >= n2 ;a--){
+                        for(var b = 1; b <= n2; b++){
+                            i += "\t" + a + "*" + b + "=" + a*b;
+                        }
+                    i += "\n";
+                    }
+                    console.log(i);
+                }
+                else{
+                    for(var a = n1; a <= n2; a++){
+                        for(var b = 1; b <= n2; b++){
+                            j += "\t" + a + "*" + b + "=" + a*b;
+                        }
+                        j += "\n";
+                    }
+                    console.log(j);
+                }
+        }
+        </script>
+    </body>
+</html>
