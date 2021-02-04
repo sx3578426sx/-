@@ -4,3 +4,4 @@
 
 ## 九九乘法表-套用function
 ![image](https://user-images.githubusercontent.com/61260613/106695902-887ae080-6616-11eb-915d-19419085f50e.png)
+![image](https://user-images.githubusercontent.com/61260613/106832665-0b5e7280-66cd-11eb-965f-f20dfa0a14bf.png)
