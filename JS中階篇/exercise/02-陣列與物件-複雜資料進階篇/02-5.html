@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>陣列迴圈應用二</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/02-5.css">
+</head>
+<body>
+
+    <div class="mid">
+        <input class="seach" type="text" value="線上課程">
+        <p>最近熱門搜尋:  
+            <a class="tag" href="javascript:;" >媽祖</a>、
+            <a class="tag" href="javascript:;" >地震</a>、
+            <a class="tag" href="javascript:;" >館長</a>、
+            <a class="tag" href="javascript:;" >線上課程</a>
+        </p>
+        <div class="seach_list">
+            <!-- <div class="item">
+                <a href="javascript:;" target="_blank" class="title">台灣媽祖信仰- 维基百科，自由的百科全书</a>
+                <a href="javascript:;" target="_blank" class="link">https://zh.wikipedia.org/zh-tw/台灣媽祖信仰</a>
+                <p>媽祖信仰是臺灣普遍民間信仰。早期移民多自華南渡海，心驚膽顫，且台灣四面環海，海上活動頻繁，海神媽祖婆成臺灣人重要精神託付。臺灣有媽祖廟510座以上，有 ...</p>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        var seachData = {
+            "媽祖":[
+                {
+                    title: '台灣媽祖信仰- 维基百科，自由的百科全书',
+                    link: 'https://zh.wikipedia.org/zh-tw/台灣媽祖信仰',
+                    text: '媽祖信仰是臺灣普遍民間信仰。早期移民多自華南渡海，心驚膽顫，且台灣四面環海，海上活動頻繁，海神媽祖婆成臺灣人重要精神託付。臺灣有媽祖廟510座以上，有 ...',
+                },
+                {
+                    title: '媽祖的介紹',
+                    link: 'www.ntcu.edu.tw/edison/otm/__1.html',
+                    text: '媽祖就是「天上聖母」，我們一般通稱「媽祖」或「媽祖婆」。 媽祖是古時候的宋朝人，她的本名叫「林默娘」，從小就相當相當聰明，讀經書過目不忘。 媽祖十三歲的時後 ...',
+                }
+            ],
+            "地震":[
+                {
+                    title: '地震 - 中央氣象局',
+                    link: 'https://www.cwb.gov.tw/V7/earthquake/',
+                    text: '資料來源：美國地質調查所主動發布之全球地震自動定位資訊，透過EMAIL方式通報.本網頁僅展示地震規模大於6之全球地震初步訊息，欲查詢詳細地震資訊請 ...',
+                }
+            ],
+            "館長":[
+                {
+                    title: '館長成吉思汗- YouTube',
+                    link: 'https://www.youtube.com/channel/UCnnp2fWa77PP2h08T7WAzzw',
+                    text: '健身格鬥者的天堂成吉思汗健身俱樂部進化綜合格鬥中心https://www.facebook.com/mmagym.tw?ref=bookmarks 惡名昭彰全新 ',
+                },
+                {
+                    title: '陳之漢- 维基百科，自由的百科全书',
+                    link: 'https://zh.wikipedia.org/zh-tw/陳之漢',
+                    text: '陳之漢（1979年3月12日－），原名陳思翰，臺灣知名部落客、直播主、網路名人、企業家、運動員、健身教練、散打武術家，曾任志願役軍人，後為連鎖健身房創辦人兼執行長、「中華民國健力協會」顧問、服飾品牌創辦人。生於臺北蘆洲（今新北市蘆洲區），籍貫宜蘭，人稱「館長」。',
+                }
+            ],
+            "線上課程":[
+                {
+                    title: '現代 JavaScript 職人之路｜入門篇',
+                    link: 'https://hiskio.com/courses/244',
+                    text: '現代 JavaScript 職人之路學程，明確的學程定位帶您往前端工程師的技術門檻前進！深厚的 JavaScript 觀念 + 大量的實戰講義 + 情境實作範例，唯一目標就是帶您取得前端工程師的入門券！',
+                },
+                {
+                    title: '現代 JavaScript 職人之路｜中階實戰篇',
+                    link: 'https://hiskio.com/courses/245',
+                    text: '您需要一位在業界打滾多年、在教學界經驗豐富又懂得如何帶您成長的導師，帶您從基礎起飛，成為進擊的前端工程師。',
+                },
+                {
+                    title: '職人必修的 RWD 網頁入門班',
+                    link: 'https://hahow.in/cr/responsive-design',
+                    text: '從零開始打好基礎建立觀念，帶入實作，用業界常常遇到的問題當舉例，教你如何解決很多因為行動裝置而產生破版，還有如何利用百分比的切版技巧來減少修改的時間',
+                }
+            ]
+        }
+
+        // 先抓 input(seach) 、div(seach_list)、tag(tag)實體、html先放""
+        // seachArr = ['線上課程']; seachArr用來存seachData撈出來的資料，這邊放線上課程是剛開頁面預設畫面
+        var seach = document.getElementsByClassName("seach")[0];
+        var seach_list = document.getElementsByClassName("seach_list")[0];
+        var tag = document.getElementsByClassName("tag");
+        var html = "";
+        var seachArr = seachData['線上課程'];
+
+        // 用for迴圈將tag標籤加入點擊事件(seachTag)
+        for(var i = 0; i < tag.length; i++){
+            tag[i].addEventListener("click",seachTag)
+        }
+        
+        // DOMrender的函式，在seachTag函式跟初始化時都會調用這個函式，所以先清空組好的html跟seach_list的HTML動元素，
+        // 然後才將seachTag撈出來的seachArr資料拿來跑for迴圈，組成新的html模板，因為有多行，所以每行開頭都是html += "..."
+        // 將html加到seach_list的HTML動元素裡
+        function DOMrender(){
+            html = "";
+            seach_list.innerHTML = "";
+            for(var s = 0; s < seachArr.length; s++){
+                html += '<div class="item">'
+                html += '<a href="javascript:;" target="_blank" class="title">'+ seachArr[s].title +'</a>'
+                html += '<a href="'+ seachArr[s].link +'" target="_blank" class="link">'+ seachArr[s].link +'</a>'
+                html += '<p>'+ seachArr[s].text +'</p>'
+                html += '</div>'
+            }
+            seach_list.innerHTML = html;
+        }
+
+        // seachTag的函式，使用seachArr存seachData的key的文字，依照點擊關鍵字的變更，
+        // 搜尋框(seach)的值(value)也會跟著變更，並且每次都會執行DOMrender函式
+        function seachTag(){
+            seachArr = seachData[this.innerText];
+            seach.value = this.innerText;
+            DOMrender();
+        }
+        
+        // 將seach加入鍵盤事件('keyup')，匿名函式將撈出seachData即時表單當下所存放的value存放在seachArr裡，
+        // 當seachArr裡的字被刪掉，就會拿來跟seachData的value去做比較，長度不相同value回傳給seachArr會報undefined，
+        // 所以要寫if比較式，如果今天seachArr等於undefined的話，就要強制將seachArr轉為空陣列[]；
+        // 當資料撈完後要再執行一次DOMrender
+        seach.addEventListener("keyup",function(){
+            seachArr = seachData[this.value];
+            if(seachArr === undefined){
+                seachArr = [];
+            }
+            DOMrender();
+        })
+
+        DOMrender();
+    
+    </script>
+</body>
+</html>
+

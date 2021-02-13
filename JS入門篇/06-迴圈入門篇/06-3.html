@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for 迴圈 - 2</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/06-2.css">
+</head>
+<body>
+    <div id="app">
+    </div>
+
+    <script>
+        var app = document.getElementById("app");
+        var html = "";
+        var bigNum = 51;
+        for(var i = 0; i < bigNum; i++){
+            html += "<div id='a"+i+"' class='Ball' style='border-radius:" + i + "px;'>" + i + "</div>"
+        }
+        app.innerHTML = html;
+
+        for(var f = 0; f < bigNum; f++){
+            document.getElementById("a"+f).addEventListener("click",clickBoxFn);
+        }
+        function clickBoxFn(){
+            this.style.backgroundColor = "blue";
+            this.style.color = "#fff";
+        }
+        
+        // var app = document.getElementById('app');
+        // var html = "";
+        // var Idx = 0;
+        // var bigNum = 51;
+        // for(var i = 0; i < bigNum; i++){
+        //     html += '<div id="a'+i+'" class="Ball" style="border-radius:'+ i +'px;">' + i + '</div>'
+        // }
+        // app.innerHTML = html;
+
+        // for(var s = 0; s < bigNum; s++){
+        //     document.getElementById('a'+s).addEventListener('click', clickBoxFn)
+        // }
+        // function clickBoxFn(){
+        //     this.style.backgroundColor = 'red';
+        //     this.style.color = '#fff';
+        // }
+    </script>
+</body>
+</html>
+
+
+<!-- YJ筆記
+    在畫面產生0~50個按鈕，當滑鼠點擊時，按鈕數字為白色；按鈕背景為紅色
+    <script>
+抓app動元素
+var html空值
+寫一個for迴圈(設一個變數i;條件;條件達成做的事){
+    html放入<div id class=Ball style="border-radius:'+ i +'px;"> + 變數 +</div>
+}
+app.innerHTML html
+
+第二個for迴圈用來寫觸發事件(addEventListener)
+for(變數;條件;條件達成執行){
+    抓id(字串+變數).觸發click事件,執行function命名clickFn，
+    注意寫在迴圈裡的function不能用匿名function，不然會報錯
+}
+寫出clickFn的function(){
+    使用this(全局).改變背景顏色為紅色
+    this.改變字的顏色為白色
+}
+</script> -->

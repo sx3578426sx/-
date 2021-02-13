@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>增加移除 Class</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/09-1.css">
+</head>
+<body>
+    <div id="app">
+        <a class="menuBtn"><i class="fas fa-bars fa-3x"></i></a>
+        <div class="content">
+            <img src="../images/logo2.png" alt="">
+        </div>
+
+        <div class="menu ">
+            <a class="closeBtn"><i class="fas fa-times fa-3x"></i></a>
+            <ul class="nav">
+                <li><a>abous</a></li>
+                <li><a>content</a></li>
+                <li><a>user</a></li>
+                <li><a>address</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var menu = document.getElementsByClassName("menu")[0];
+        var menuBtn = document.getElementsByClassName("menuBtn")[0];
+        var closeBtn = document.getElementsByClassName("closeBtn")[0];
+
+        menuBtn.addEventListener("click",function(){
+            menu.classList.add("open");
+        })
+
+        closeBtn.addEventListener("click",function(){
+            menu.classList.remove("open");
+        })
+
+    </script>
+</body>
+</html>
+
+<!-- YJ筆記
+    開啟或關閉清單的按鈕
+抓三個class動元素(分別是menu,menuBtn,closeBtn)[0]，因為是class有很多個所以要跟它說是第零位
+開啟清單(新增用.add)
+    提示：menuBtn加入一個事件，點擊執行menu.classList.add('open');
+關閉清單(移除用.remove)
+    提示：closeBtn加入一個事件，點擊執行menu.classList.remove('open'); -->
+    
+    <!-- var menu = document.getElementsByClassName('menu')[0];
+        var menuBtn = document.getElementsByClassName('menuBtn')[0];
+        var closeBtn = document.getElementsByClassName('closeBtn')[0];
+        
+
+        menuBtn.addEventListener('click', function(){
+            menu.classList.add('open');
+        })
+
+        closeBtn.addEventListener('click', function(){
+            menu.classList.remove('open');
+        }) -->

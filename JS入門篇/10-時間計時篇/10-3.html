@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>計時器進階組合( 播放、暫停、重新 )</title>
+    <link rel="stylesheet" href="./css/10-3.css">
+</head>
+<body>
+    <div>
+        <h1 id="timeTxt">0</h1>
+        <div class="btn">
+            <a id="play" class="">播放</a>
+            <a id="stop">暫停</a>
+            <a id="reset">重新</a>
+        </div>
+    </div>
+    
+    <script>
+        var idx = document.getElementById("timeTxt");
+        var play = document.getElementById("play");
+        var stop = document.getElementById("stop");
+        var reset = document.getElementById("reset");
+        
+        var playTime = null;
+        var time = 0;
+        
+        play.addEventListener("click",playFn);
+        stop.addEventListener("click",stopFn);
+        reset.addEventListener("click",resetFn);
+        
+        function TimeGo(){
+            playTime = setInterval(function(){
+                time++;
+                idx.innerText = time;
+            },1000)
+        }
+        
+        function resetActive(){
+            play.classList.remove("active");
+            stop.classList.remove("active");
+            reset.classList.remove("active");
+        }
+        
+        function playFn(){
+            play.removeEventListener("click",playFn);
+            stop.addEventListener("click",stopFn);
+            TimeGo();
+            resetActive();
+            play.classList.add("active");
+        }
+
+        function stopFn(){
+            play.addEventListener("click",playFn);
+            clearInterval(playTime);
+            resetActive();
+            this.classList.add("active");
+        }
+
+        function resetFn(){
+            stop.removeEventListener("click",stopFn);
+            time = 0;
+            idx.innerText = time;
+            this.classList.add("active");
+            clearInterval(playTime);
+            resetActive();
+            setTimeout(function(){
+                resetActive();
+                play.addEventListener("click",playFn);
+            },1500)
+        }
+
+    </script>
+    
+</body>
+</html>
+
+<!-- YJ筆記
+    寫一個計時器可以播放、暫停、重新，且
+    1.播放不能連續按
+    2.當按重新時，播放不能馬上按
+先抓取h1跟三個按鈕;
+playTime變數=null，這是當計時器的TimeGo變數;
+time變數=0，用來加入文字的，從0開始;
+isStop變數=false;
+三個按鈕分別加上各自的點擊事件，函式挑出來寫;
+TimeGo函式,寫setInterval讓時間累加;
+resetActive函式,移除所有按鈕的狀態(active);
+按鈕函式
+1.播放:當按鈕被點擊時先移除所有播放的點擊事件，這樣播放就不能連續按;
+    然後要讓時間開始計時，所以要執行TimeGo;
+    因為只有"播放"要加入class(active)，所以要先將所有按鈕要移除class，執行resetActive;
+    然後再加入class(active);
+2.暫停:當按鈕被點擊時，播放按鈕要保持可以按的事件，所以要加入播放的點擊事件;
+    暫停後如果按播放會使播放秒數加快是因為TimeGo被執行兩次，所以這裡要先清空計時(playTime);
+    移除所有按鈕的狀態,執行resetActive;
+    只有當被點擊的按鈕加入class(active);
+3.重新:因按重新時，播放按鈕不能馬上按，所以要先移除播放的點擊事件;
+    讓時間time歸零，並且將歸零後的數字加入h1中;
+    移除所有按鈕的狀態,執行resetActive;
+    只有被點擊的按鈕加入class(active);
+    因為重新了，要清空計時;
+    按了重新按鈕，不能馬上按播放，寫一個setTimeout設定1.5秒後才能按播放，
+        函式裡面先放移除所有按鈕的狀態，然後再加入播放的點擊事件。 -->
+        <!-- var timeTxt = document.getElementById('timeTxt');
+        var play = document.getElementById('play');
+        var stop = document.getElementById('stop');
+        var reset = document.getElementById('reset');
+
+        var playTime = null;
+        var time = 0;
+        var isStop = false;
+
+        play.addEventListener("click", playFn);
+        stop.addEventListener("click", stopFn);
+        reset.addEventListener('click', resetFn)
+
+        
+        function playFn(){
+            play.removeEventListener("click", playFn);
+            TimeGo();
+            resetActive();
+            this.classList.add('active');
+        }
+        
+        function stopFn(){
+            play.addEventListener("click", playFn);
+            clearInterval(playTime);
+            resetActive();
+            this.classList.add('active');
+        }
+
+        function resetFn(){
+            play.removeEventListener("click", playFn);
+            time = 0;
+            timeTxt.innerText = time;
+            resetActive();
+            this.classList.add('active');
+            clearInterval(playTime);
+            setTimeout(function(){
+                resetActive();
+                play.addEventListener("click", playFn);
+            }, 1500);
+            
+        }
+
+        function TimeGo(){
+            playTime = setInterval(function(){
+                time++;
+                timeTxt.innerText = time;
+            }, 1000);
+        }
+
+        function resetActive(){
+            play.classList.remove('active');
+            stop.classList.remove('active');
+            reset.classList.remove('active');
+        } -->

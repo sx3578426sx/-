@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>while 迴圈</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/06-1.css">
+</head>
+<body>
+    <div id="app">
+        <h1 class="box">1</h1>
+    </div>
+
+    <script>
+        var i = 0;
+        var html = "";
+        var app = document.getElementById("app");
+        while(i < 50){
+            i++;
+            html += '<h1 class="box">'+ i +'</h1>'
+        }
+        app.innerHTML = html;
+    </script>
+
+</body>
+</html>
+
+<!-- YJ筆記
+    在div裡面放多個h1，h1裡的數字要累加，使用while迴圈
+var 一個變數 = 0;
+var html裡面放空值;
+var app = 抓取app的id;
+while(條件){
+    當條件達成時會做甚麼，例如i++，
+    注意這邊一定要給指令，
+    若是不給指令，就會陷入無窮迴圈，導致當機。
+    html += '<h1 class="box">'+ i +'</h1>' 用+=的方式可以累加，
+    外面給單引號是因為box已經用雙引號了
+}
+將迴圈產生的程式碼，放到html的div裡，用app.innerHTML = html;
+JS是單程序的規則，完成一個動作才能做下一個，所以會先跑完while迴圈，才接著inner到HTML。 -->

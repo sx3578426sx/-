@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for 迴圈 - 1</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/06-2.css">
+</head>
+<body>
+    <div id="app">
+    </div>
+
+    <script>
+        var app = document.getElementById("app");
+        var html = "";
+        for(var i = 1; i < 51; i++){
+            html += "<div class='Ball' style='border-radius:"+ i +"px'>"+ i +"</div>"
+        }
+        app.innerHTML = html;
+    </script>
+</body>
+</html>
+
+<!-- YJ筆記
+    在div裡放多個div，div數字累加，且當數字越大，正方形的四個角圓角化越明顯
+var 先抓取app的id
+var html = ""
+for迴圈(var 變數 = 最小值; 變數條件，例:i < 51; 當條件達成時要做甚麼，例:i++){
+    html += '<div class="Ball" style="border-radius:'+ i +'px;">' + i + '</div>'
+    上面html += 自己創一個div class="Ball"因為已經寫好css
+    style="border-radius"表示圓角角度 + 數字 + px
+}
+將迴圈產生的程式碼，放到html的div裡，用app.innerHTML = html; -->

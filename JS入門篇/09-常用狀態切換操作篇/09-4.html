@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>選取狀態切換</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/09-4.css">
+</head>
+<body>
+    <div id="app">
+        <div>      
+            <img id="logo" src="../images/logo2.png" alt="">
+            <ul class="navBox">
+                <li><a id="n1" class="nav active">首頁 > </a></li>
+                <li><a id="n2" class="nav">關於我們 > </a></li>
+                <li><a id="n3" class="nav">連絡客服 > </a></li>
+                <li><a id="n4" class="nav">最新課程 > </a></li>
+                <li><a id="n5" class="nav">最新消息 > </a></li>
+                <li><a id="n6" class="nav">課程公告 > </a></li>
+                <li><a id="n7" class="nav">成為老師 > </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+       var navBtn = document.getElementsByClassName("nav");
+
+       for(var i = 0; i < navBtn.length; i++){
+           navBtn[i].addEventListener("click", menuClick);
+       }
+
+       function menuClick(){
+           for(var s = 0; s < navBtn.length; s++){
+               navBtn[s].classList.remove("active");
+           }
+           this.classList.add("active");
+       }
+
+    </script>
+</body>
+</html>
+
+<!-- YJ筆記
+    清單按鈕被點擊時，按鈕狀態改變(加入class="active"，其他按鈕移除class="active")
+var navBtn getClass('nav'); 這邊不用指定第幾位，在for迴圈用[i]
+for迴圈，當i小於navBtn的長度時，i++{
+    依照navBtn[i]新增事件，執行menuClick的功能
+}
+menuClcik執行{
+    for迴圈(var s){
+    ...remove('active')
+}
+當按鈕被點擊時，清單加入active
+    提示：this.classList.add('active')
+}
+
+var navBtn = document.getElementsByClassName('nav');
+
+for(var i = 0; i < navBtn.length; i++){
+    navBtn[i].addEventListener('click', menuClcik);
+}
+
+function menuClcik(){
+    for(var s = 0; s < navBtn.length; s++){
+        navBtn[s].classList.remove('active');
+    }
+    this.classList.add('active');
+} -->

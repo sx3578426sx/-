@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>計時器 setInterval()</title>
+    <link rel="stylesheet" href="./css/10-1.css">
+</head>
+<body>
+    <h1 id="time"></h1>
+
+    <script>
+        var idx = 0;
+        var time = document.getElementById("time");
+        time.innerText = idx;
+        
+        var go = setInterval(function(){
+            idx++;
+            if(idx >= 10){
+                clearInterval(go)
+            }
+            time.innerText = idx;
+        },1000)
+    </script>
+
+
+</body>
+</html>
+
+<!-- YJ筆記
+    寫一個計時器，當數到10的時候，停止計時。
+首先var idx=0，從零開始
+抓id=time動元素
+此時h1沒有東西，要給time加入文字(idx)
+    提示:用.innerText
+計時器用setInterval(function(){},毫秒)
+    1000毫秒=1秒
+    提示:計時器裡的function裡就放累加秒數，如果大於10秒，則用clearInterval清空計時
+因為清空計時器需要清空setInterval，所以要把前面寫的setInterval寫成一個變數，例如var go=...
+        var idx = 0;
+        var time = document.getElementById('time');
+        time.innerText = idx;
+        
+        var go = setInterval(function(){
+            idx++;
+            time.innerText = idx;
+
+            if(idx >= 10){
+                clearInterval(go);
+            }
+        },1000); -->
+<!-- 第二次練習
+        var time = document.getElementById("time");
+        var idx = 0;
+        time.innerText = idx;
+        var timeGo = setInterval(function(){
+            if(idx < 10){
+                idx++;
+                time.innerText = idx;
+            }
+        },1000) -->

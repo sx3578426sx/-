@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>計時器 setTimeout()</title>
+    <link rel="stylesheet" href="./css/10-1.css">
+</head>
+<body>
+    <h1 id="time"></h1>
+
+    <script>
+    var time = document.getElementById("time");
+        time.innerText = "3秒後開始";
+        setTimeout(function(){
+            time.innerText = "開始";
+        },3000)
+        setTimeout(function(){
+            time.innerText = "END";
+        },6000)
+    </script>
+    
+</body>
+</html>
+<!-- YJ筆記
+    進入頁面顯示"3秒後開始"，3秒到了顯示"開始"，再過3秒顯示"END"
+首先抓h1動元素(time)
+h1加入文字"3秒後開始"
+寫兩個setTimeout，分別是"開始"跟"END"
+setTimeout(function(){},毫秒)
+注意"開始"是3秒所以要填3000毫秒，"END"要填6000毫秒，因為跟前面"開始"的setTimeout是同步計時的。
+
+    var time = document.getElementById('time');
+    time.innerText = '3秒後開始';
+        
+        
+    setTimeout(function(){
+        time.innerText = '開始!';
+    },3000);
+
+    setTimeout(function(){
+        time.innerText = 'END';
+    },6000); -->
+
+<!-- 第二次練習
+        var idx = 0;
+        var time = document.getElementById("time");
+        time.innerText = "三秒後開始";
+        setTimeout(function(){
+            time.innerText = "開始";
+        },3000)
+        setTimeout(function(){
+            time.innerText = "END";
+        },6000) -->
+
