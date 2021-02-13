@@ -13,7 +13,20 @@
     <button id="btn">點我拿資料</button>
 
     <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click",function(e){
+            console.log(e.target)
+        })
+
+        function Data(i, j){
+            return i + j;
+        }
+        console.log(Data(1,3));
+        console.log(Data(122,3));
+        console.log(Data(2,3));
         
+        
+
     </script>
     
 </body>
