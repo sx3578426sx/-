@@ -1,0 +1,90 @@
+[
+    {
+        "strText": "台北信義威秀影城",
+        "strValue": "1|TP"
+    },
+    {
+        "strText": "MUVIE CINEMAS台北松仁威秀",
+        "strValue": "21|MU"
+    },
+    {
+        "strText": "MUVIE CINEMAS台北松仁威秀(MUCROWN)",
+        "strValue": "21|MUC"
+    },
+    {
+        "strText": "台北京站威秀影城",
+        "strValue": "12|QS"
+    },
+    {
+        "strText": "板橋大遠百威秀影城",
+        "strValue": "16|BQ"
+    },
+    {
+        "strText": "林口MITSUI OUTLET PARK威秀影城",
+        "strValue": "19|LK"
+    },
+    {
+        "strText": "林口MITSUI OUTLET PARK威秀影城(Mappa)",
+        "strValue": "19|LKMP"
+    },
+    {
+        "strText": "桃園統領威秀影城",
+        "strValue": "20|TY"
+    },
+    {
+        "strText": "新竹大遠百威秀影城",
+        "strValue": "2|HS"
+    },
+    {
+        "strText": "新竹大遠百威秀影城(Gold Class)",
+        "strValue": "2|HSGC"
+    },
+    {
+        "strText": "新竹巨城威秀影城",
+        "strValue": "14|BC"
+    },
+    {
+        "strText": "頭份尚順威秀影城",
+        "strValue": "18|TF"
+    },
+    {
+        "strText": "台中大遠百威秀影城",
+        "strValue": "15|TZ"
+    },
+    {
+        "strText": "台中Tiger City威秀影城",
+        "strValue": "3|TT01"
+    },
+    {
+        "strText": "台中Tiger City威秀影城(Gold Class)",
+        "strValue": "3|TT02"
+    },
+    {
+        "strText": "台南大遠百威秀影城",
+        "strValue": "5|TN"
+    },
+    {
+        "strText": "台南FOCUS威秀影城",
+        "strValue": "25|FC"
+    },
+    {
+        "strText": "台南南紡威秀影城",
+        "strValue": "17|NF"
+    },
+    {
+        "strText": "台南南紡威秀影城(Gold Class)",
+        "strValue": "17|NFGC"
+    },
+    {
+        "strText": "高雄大遠百威秀影城",
+        "strValue": "6|KS"
+    },
+    {
+        "strText": "高雄大遠百威秀影城(Gold Class)",
+        "strValue": "6|KSGC"
+    },
+    {
+        "strText": "花蓮新天堂樂園威秀影城",
+        "strValue": "22|HL"
+    }
+]

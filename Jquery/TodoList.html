@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <style>
+        li {
+            list-style: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>TodoList</h1>
+    <br />
+    <!-- <input type="text" id='myInput'><button id="Add" onclick="Add()">Add</button> -->
+    <div class="input-group mb-3" style="width: 25%;">
+        <input type="text" id='myInput' class="form-control">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="Add">Add</button>
+        </div>
+    </div>
+
+    <br />
+
+    <ul id='myUl'>
+        <li>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="allCheck" onchange="AllCheck(this)">
+                <label class="custom-control-label" for="allCheck">全選</label>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" name='myCheckbox' value="11">11
+            <button type="button" class="btn btn-danger" onclick="Remove(this)">X</button>
+        </li>
+        <li>
+            <input type="checkbox" name='myCheckbox' value="12">12
+            <button type="button" class="btn btn-danger" onclick="Remove(this)">X</button>
+        </li>
+        <li>
+            <input type="checkbox" name='myCheckbox' value="13">13
+            <button type="button" class="btn btn-danger" onclick="Remove(this)">X</button>
+        </li>
+        <li>
+            <input type="checkbox" name='myCheckbox' value="14">14
+            <button type="button" class="btn btn-danger" onclick="Remove(this)">X</button>
+        </li>
+    </ul>
+
+    <button type="button" class="btn btn-info" onclick="ShowItem()">顯示勾選項目</button>
+
+    <script>
+        // #region 新增
+
+        // JS寫法1
+        // var btn = document.getElementById('Add');
+        // btn.addEventListener('click', function () {
+        //     console.log('Add');
+        // });
+
+        // JS寫法2
+        // function Add() {
+        //     console.log('Add');
+        // }
+
+        // Jquery寫法
+        function Add() {
+            var input = $("#myInput");
+            var inputHtml = '<li><input type="checkbox" name="myCheckbox" value="' + input.val() + '">' + input.val() + ' <button type="button" class="btn btn-danger" onclick="Remove(this)">X</button></li>'
+            var myUl = $("#myUl");
+
+            // 防呆: 若有值才會新增項目，新增完要清空input值
+            if (input.val()) {
+                myUl.html(myUl.html() + inputHtml);
+                input.val('');
+            }
+        }
+
+        $("#Add").on('click', Add);
+        // #endregion
+
+        // #region 刪除
+        // 錯誤寫法: 後來新增的項目不會綁定click事件
+        // $(".remove").on('click', function () {
+        //     alert('remove');
+        // });
+
+        // 正確寫法
+        function Remove(e) {
+            // 抓到該button的上層li然後整個html移除
+            $(e).parent().remove();
+        }
+        // #endregion
+
+        // #region 全選
+        // 錯誤寫法: 後面新增的項目不會被觸發到
+        // $("#allCheck").on('change', function (e) {
+        //     var allCheck = $(e.target).prop('checked');
+        //     $("input[name='myCheckbox']").prop("checked", allCheck);
+        // });
+
+        // 正確寫法
+        function AllCheck(e) {
+            var allCheck = $(e).prop('checked');
+            $("input[name='myCheckbox']").prop("checked", allCheck);
+        }
+        // #endregion
+
+        // #region 顯示勾選項目
+        function ShowItem() {
+            var checkItems = $($("input[name='myCheckbox']:checked"));
+            var checkString = '';
+
+            // 組勾選項目
+            if (checkItems.length > 0) {
+                for (var i = 0; i < checkItems.length; i++) {
+                    checkString += $(checkItems[i]).val() + '\n';
+                }
+
+                alert('已勾選項目: \n' + checkString);
+            }
+            else {
+                checkString = '未勾選項目';
+
+                alert(checkString);
+            }
+        }
+        // #endregion
+    </script>
+</body>
+
+</html>

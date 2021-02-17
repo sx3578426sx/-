@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax請求練習</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>Ajax請求練習--資料來源為本機json</div>
+    <ul id="myData"></ul>
+</body>
+
+<script>
+    var proxy = "https://cors-anywhere.herokuapp.com/";	// 跨網域轉址
+    // var url = "https://data.taipei/api/getDatasetInfo/downloadResource?id=6bb3304b-4f46-4bb0-8cd1-60c66dcd1cae&rid=13edb779-e5ea-4fc4-8fd1-595ef5b16072";	// 沒設定CORS的API
+    // var url = "https://www.vscinemas.com.tw/VsWeb/api/GetLstDicCinema";	// 沒設定CORS的API
+
+    // 用ajax呼叫API
+    $.ajax({
+        type: "GET",
+        // url: "https://reurl.cc/qmkDMg",  //不可用縮短網址
+        // url: "myData.json",
+        url: "https://run.mocky.io/v3/c8c6ed5f-7804-493e-9e78-09cd612fda16",
+        // data: {
+        //     "參數1": "我是參數",
+        //     param2: 12,
+        // }
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+            // 成功呼叫到API回傳的結果
+            // console.log("成功");
+            console.log("data=", data);
+            console.log("textStatus=", textStatus);
+            console.log("jqXHR=", jqXHR);
+
+            // TODO: 取得回傳結果然後顯示在頁面上
+            var html = "";
+            for (var i = 0; i < data.length; i++) {
+                html += "<li>" + data[i].strText + "</li>";
+            }
+
+            $("#myData").html(html);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            // 呼叫API失敗回傳的結果
+            console.log("失敗");
+            console.log("error jqXHR=", jqXHR);
+            console.log("error textStatus=", textStatus);
+            console.log("error errorThrown=", errorThrown);
+        },
+        complete: function (jqXHR, textStatus) {
+            console.log("完成");
+            console.log("complete textStatus=", textStatus);
+            console.log("complete jqXHR=", jqXHR);
+        },
+    })
+</script>
+
+</html>
