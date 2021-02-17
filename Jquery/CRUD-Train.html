@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD練習</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <style>
+    li{
+        list-style: none;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>CRUD練習</h1>
+    <input type="text" id="inText"><button onclick="add()">add</button>
+    <ul>
+        <li><input type="checkbox" name="myCheck">全選</li>
+        <li><input type="checkbox" name="myCheck">第1項<button onclick="deBtn()">X</button></li>
+        <li><input type="checkbox" name="myCheck">第2項<button onclick="deBtn()">X</button></li>
+        <li><input type="checkbox" name="myCheck">第3項<button onclick="deBtn()">X</button></li>
+        <li><input type="checkbox" name="myCheck">第4項<button onclick="deBtn()">X</button></li>
+        <li><input type="checkbox" name="myCheck">第5項<button onclick="deBtn()">X</button></li>
+    </ul>
+    <button>顯示勾選項目</button>
+
+    
+    <script>
+        let html = "";
+        let allCheck = $("ul").html();
+        // Todo: 點選add按鈕，新增一個項目並清空文字框的內容
+        function add(){
+            if($("#inText").val() != ""){
+            html += '<li><input type="checkbox" name="myCheck">'+ $("#inText").val() +'<button onclick="deBtn()">X</button></li>';
+            $("ul").html(allCheck + html);
+            $("#inText").val() = "";
+            }
+            alert("尚未填入項目");
+        }
+        // Todo: 刪除
+        function deBtn(){
+            delete this.button;
+        }
+        // Todo: 全選
+
+        // Todo: 顯示勾選項目
+    </script>
+</body>
+</html>
