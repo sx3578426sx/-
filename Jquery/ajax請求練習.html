@@ -12,24 +12,49 @@
     CORS = 跨網域資源共享(後端在用的，要先設定好，前端才能抓的到資料(.json檔)) -->
 
 <body>
-    <div>Ajax請求練習--資料來源為政府資料開放平台</div>
-
+    <div>Ajax請求練習--資料來源為本機json</div>
+    <ul id="myData"></ul>
     <script>
-    // TODO:用ajax呼叫API(https://ws.yunlin.gov.tw/001/Upload/539/opendata/0/1108/271c4429-5c31-4773-b2ac-dcba5abbdf4c.json)
+    // 用ajax呼叫API(https://ws.yunlin.gov.tw/001/Upload/539/opendata/0/1108/271c4429-5c31-4773-b2ac-dcba5abbdf4c.json)
         $.ajax({
             type: "GET",
-            url: "https://ws.yunlin.gov.tw/001/Upload/539/opendata/0/1108/271c4429-5c31-4773-b2ac-dcba5abbdf4c.json",
+            url: "https://run.mocky.io/v3/c8c6ed5f-7804-493e-9e78-09cd612fda16",
             // data: {
             //     "參數1":"我是參數",
             //     Param1:123,
-            //     "如果用GET就不用放data":"除非有要求要放，不然可能報錯"},
-            dataType: JSON,
-            success:()
+            //     "如果用GET就不用放data":"除非有要求要放，不然可能報錯"
+            // },
+            dataType: "json",
+            success: function(data, textStatus, jqXHR){
+                console.log("成功");
+                console.log("success data =" + data);
+                console.log("success textStatus =" + textStatus);
+                console.log("success jqXHR =" + jqXHR);
+
+            // 取得回傳結果然後顯示在頁面上
+                var html = "";
+                for(var i = 0; i < data.length; i++){
+                    html += "<li>"+ data[i].strText +"</li>"
+                }
+                document.getElementById("myData").innerHTML = html;
+                // $("#myData").html(html);
+            },
+
+            // 失敗會回傳的值
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log("失敗");
+                console.log("error jqXHR =" + jqXHR);
+                console.log("error textStatus =" + textStatus);
+                console.log("errorThrown =" + errorThrown);
+            },
+
+            // 不管成功或失敗都會顯示的值
+            complete: function(jqXHR, textStatus){
+                console.log("完成");
+                console.log("complete jqXHR =" + jqXHR);
+                console.log("complete textStatus =" + textStatus);
+            }
         })
-
-    // TODO:取得回傳結果然後顯示在頁面上
-
-    
     </script>
 </body>
 </html>
