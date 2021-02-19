@@ -43,13 +43,12 @@
         }
     // 顯示勾選項目
         function showCheckItem(){
-            let myCheck = $($("input[name='myCheck']:checked"));
+            let CheckItem = $($("input[name='myCheck']:checked"));
             let showStr = "";
-            if(myCheck.length > 0){
-                for(let i = 0;i < myCheck.length; i++){
-                    showStr += $(myCheck[i]).val() + "\n";
-                }
-                alert("目前勾選項目:" + "\n" + showStr);
+            if(CheckItem.length > 0){
+                for(let i = 0; i < CheckItem.length;i++){
+                    showStr += $(CheckItem[i]).val() + "\n";
+                }alert("勾選項有:" + "\n" + showStr);
             }
             else{
                 showStr = "尚未勾選項目";
