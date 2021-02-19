@@ -16,31 +16,39 @@
     <ul id="myData"></ul>
     <script>
     // 用ajax呼叫API(https://run.mocky.io/v3/c8c6ed5f-7804-493e-9e78-09cd612fda16)
-        var html = "";  
         $.ajax({
             type: "GET",
             url: "https://run.mocky.io/v3/c8c6ed5f-7804-493e-9e78-09cd612fda16",
             dataType: "json",
-            success: function(data, textStatus, jqXHR){
-                console.log("成功");
+        
         // 成功取得回傳結果然後顯示在頁面上
-            for(var i = 0; i < data.length; i++){
-                html += "<li>"+ data[i].strText +"</li>";
+           success:function(data, textStatus, jqXHR){
+               console.log("SUCCESS");
+            //    console.log("data:" + data);
+            //    console.log("textStatus:" + textStatus);
+            //    console.log("jqXHR:" + jqXHR);
+            var html = "";
+            for(var i = 0;i < data.length; i++){
+                html += '<li>'+ data[i].strText +'</li>'
             }
             $("#myData").html(html);
-            },
-            
+           },
 
         // 呼叫API失敗會回傳的值
-            error: function(jqXHR,textStatus,errorThrown){
-                console.log("失敗");
-            },
+           error: function(jqXHR, textStatus, errorThrow){
+               console.log("ERROR");
+            //    console.log("jqXHR:" + jqXHR);
+            //    console.log("textStatus:" + textStatus);
+            //    console.log("errorThrow:" + errorThrow);
+           },
 
         // 不管成功或失敗都會顯示的值
-            complete: function(jqXHR,textStatus){
-                console.log("完成")
-            }
-        })
+          complete: function(jqXHR,textStatus){
+            console.log("COMPLETE")
+            // console.log("jqXHR:" + jqXHR);
+            // console.log("textStatus:" + textStatus);
+          }
+        })  
     </script>
 </body>
 </html>
