@@ -5,15 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>隨機驗證碼</title>
+    <style>
+        #passWordImg{
+            background-color: bisque;
+            width: 150px;
+            height: 50px;
+            text-align:center;
+            font-size: 32px;
+        }
+    </style>
 </head>
 <body>
-<!-- TODO:驗證碼介面 驗證碼、看不清楚換一張、確認-->
-
+<!--驗證碼介面 驗證碼、看不清楚換一張、確認-->
+    <p><span id="passWordImg">123456</span><button id="change">換一個驗證碼</button></p>
+    <p>請輸入驗證碼:<input type="text" name="enterWord" id="myInput"><button id="CheckItem">確認</button></p>
 <script>
-// TODO: 產生0~9 a~f範圍內的隨機驗證碼
+// 產生0~9 a~f範圍內的隨機驗證碼
+    window.onload = function(){
+        let passWordImg = document.getElementById("passWordImg");
+        let myInput = document.getElementById("myInput");
+        let a = changeBtn();
+        function changeBtn(){
+            let arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+            let word = "";
+                for(var i = 0; i < 6;i++){
+                    word += arr[Math.round(Math.random((15-0)+1)*15)];
+                }
+                passWordImg.innerText = word;
+            }
+        changeBtn()
+    
+        // 當點選看不清楚時，重新產生驗證碼
+        document.getElementById("change").addEventListener("click",changeBtn);
 
-// TODO: 當點選看不清楚時，重新產生驗證碼
-// TODO: 輸入完驗證碼，進行比對，如果不符合要跳出驗證碼錯誤視窗
+        // 鍵入完驗證碼，進行比對，如果不符合要跳出驗證碼錯誤視窗
+        document.getElementById("CheckItem").addEventListener("click",function(){
+            if(passWordImg.innerText != myInput.value){
+                alert("驗證碼錯誤");
+                myInput.value = "";
+            }
+        })
+    }
 </script>
 </body>
 </html>
