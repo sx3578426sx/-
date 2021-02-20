@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三次練習</title>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>全選、全不選、反選</h1>
+    <ul>
+        <li><input type="checkbox" name="myCheck" value="a1">a1</li>
+        <li><input type="checkbox" name="myCheck" value="a2">a2</li>
+        <li><input type="checkbox" name="myCheck" value="a3">a3</li>
+        <li><input type="checkbox" name="myCheck" value="a4">a4</li>
+    </ul>
+    <button onclick="checkBtn(1)">全選</button>
+    <button onclick="checkBtn(2)">全不選</button>
+    <button onclick="checkBtn(3)">反選</button>
+
+    <script>
+        let check = document.getElementsByName("myCheck");
+        function checkBtn(num){
+            for(var i = 0; i < check.length; i++){
+                if(num == 1){
+                    check[i].checked = true;
+                }
+                else if(num == 2){
+                    check[i].checked = false;
+                }
+                else if(num == 3){
+                    check[i].checked = !check[i].checked
+                }
+            }
+        }
+    </script>
+</body>
+</html>
