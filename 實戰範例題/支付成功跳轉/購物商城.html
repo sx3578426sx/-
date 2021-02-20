@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天天買購物商城</title>
+    <style>
+        #title{
+            font-size: 3em;
+            background-color: azure;
+            text-align: center;
+        }
+        button{
+            width: 200px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="title">天天買購物商城</div>
+    <div>
+        <button class="Btn" onclick="Btn(1)">
+            <p>商品名稱：新衣服</p>
+            <p>價格：$100</p>
+            <p>內容：棉衣</p>
+            <p>產地：美國</p>
+        </button>
+        <button class="Btn" onclick="Btn(2)">
+            <p>商品名稱：新鞋子</p>
+            <p>價格：$200</p>
+            <p>內容：帆布鞋</p>
+            <p>產地：美國</p>
+        </button>
+    </div>
+
+    <script>
+        function Btn(num){
+            for(var i = 1; i < Btn.length; i++){
+                while(num > 1){
+                    case
+                    Btn[i].attr(href,"./商品介面"+ i +".html");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

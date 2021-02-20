@@ -10,11 +10,11 @@
 
     <!--倒數完畢返回首頁介面 -->
     <h1 style="color: red; font-size: 2em;">支付完畢</h1>
-    <p><span id="time">10</span>s倒計時，倒數完畢立即返回首頁</p>
+    <p><span id="time">5</span>秒倒計時，倒數完畢立即返回首頁</p>
     <button id="nowReturn">立即返回</button>
     <script>
     // 10s倒計時，倒數完畢返回首頁
-    var timer = 10;
+    var timer = 5;
     setInterval(function(){
         timer--;
         document.getElementById("time").innerHTML = timer
@@ -25,7 +25,7 @@
     
     // 支付成功頁面，點選立即返回，即返回首頁https://www.google.com/
     document.getElementById("nowReturn").addEventListener("click",function(){
-        location.href = "https://www.google.com/";
+        location.href = "./購物商城";
     })
     </script>
 </body>
