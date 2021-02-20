@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新衣服</title>
+    <title>新鞋子</title>
 </head>
 <body>
-    <!-- 商品介面(名稱、價格、內容、產地、兩個按鈕(取消跟支付) -->
-    <p>商品名稱：新衣服</p>
-    <p>價格：$100</p>
-    <p>內容：棉衣</p>
+    <div>
+    <p>商品名稱：新鞋子</p>
+    <p>價格：$200</p>
+    <p>內容：帆布鞋</p>
     <p>產地：美國</p>
-    <p>
-        <button>取消</button>
-        <button id="pay">支付</button>
-    </p>
-<script>
-    // 點選支付按鈕，出現確認框，若回傳結果為ture跳轉至支付成功頁面
-    var pay = document.getElementById("pay");
-    pay.addEventListener("click",function(){
-        var payConfirm = window.confirm("確定要支付嗎?");
+    <button onclick="def()">取消</button>
+    <button onclick="pay()">支付</button>
+    </div>
+    <script>
+        //點選支付按鈕跳出確認框，點選確認跳到驗證碼介面
+        function pay(){
+            var payConfirm = confirm("確定要支付嗎?");
             if(payConfirm){
                 location.href = "./驗證碼.html"
             }
-    })
-</script>
+        }
+
+        //點選取消按鈕返回購物商城
+        function def(){
+            location.href = "./購物商城.html"
+        }
+    </script>
 </body>
 </html>

@@ -5,41 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>天天買購物商城</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         #title{
             font-size: 3em;
             background-color: azure;
             text-align: center;
+            width: auto;
         }
         button{
-            width: 200px;
-            height: 400px;
+            width: auto;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div id="title">天天買購物商城</div>
-    <div>
-        <button class="Btn" onclick="Btn(1)">
-            <p>商品名稱：新衣服</p>
-            <p>價格：$100</p>
-            <p>內容：棉衣</p>
-            <p>產地：美國</p>
-        </button>
-        <button class="Btn" onclick="Btn(2)">
-            <p>商品名稱：新鞋子</p>
-            <p>價格：$200</p>
-            <p>內容：帆布鞋</p>
-            <p>產地：美國</p>
-        </button>
-    </div>
+    <br>
+    <div id="app"></div>
 
     <script>
+        $.ajax({
+            type: "GET",
+            url: "./Product.json",
+            dataType: "json",
+        
+           success:function(data, textStatus, jqXHR){
+               console.log("SUCCESS");
+        // 成功取得回傳結果然後顯示在頁面上
+            var html = "";
+            for(var i = 0;i < data.length; i++){
+                html += '<button class="Btn" onclick="Btn('+ i +')">'+ data[i].商品名稱 +'<br>'+ data[i].價格 +'</button>'
+            }
+            $("#app").html(html);
+           },
+
+        // 不管成功或失敗都會顯示的值
+          complete: function(jqXHR,textStatus){
+            console.log("COMPLETE")
+            // console.log("jqXHR:" + jqXHR);
+            // console.log("textStatus:" + textStatus);
+          }
+        })
         function Btn(num){
-            for(var i = 1; i < Btn.length; i++){
-                while(num > 1){
-                    case
-                    Btn[i].attr(href,"./商品介面"+ i +".html");
+            for(var i = 0; i <= num; i++){
+                switch(num){
+                    case num:location.href = "./商品介面"+ num + ".html";
                 }
             }
         }

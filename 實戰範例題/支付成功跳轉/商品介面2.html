@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新鞋子</title>
+    <title>帽子</title>
+    
 </head>
 <body>
     <div>
-    <p>商品名稱：新鞋子</p>
-    <p>價格：$200</p>
-    <p>內容：帆布鞋</p>
+    <p>商品名稱：帽子</p>
+    <p>價格：$150</p>
+    <p>內容：布料</p>
     <p>產地：美國</p>
-    <button>取消</button>
+    <button onclick="def()">取消</button>
     <button onclick="pay()">支付</button>
     </div>
     <script>
+        //點選支付按鈕跳出確認框，點選確認跳到驗證碼介面
         function pay(){
             var payConfirm = confirm("確定要支付嗎?");
             if(payConfirm){
                 location.href = "./驗證碼.html"
             }
+        }
+
+        //點選取消按鈕返回購物商城
+        function def(){
+            location.href = "./購物商城.html"
         }
     </script>
 </body>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>牛仔褲</title>
+    <style>
+        #passWordImg{
+            background-color: bisque;
+            width: 150px;
+            height: 50px;
+            text-align:center;
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <p>商品名稱：牛仔褲</p>
+    <p>價格：$300</p>
+    <p>內容：牛仔褲</p>
+    <p>產地：美國</p>
+    <p><span id="passWordImg">123456</span><button id="change">換一個驗證碼</button></p>
+    <p>請輸入驗證碼:<input type="text" name="enterWord" id="myInput"><button id="CheckItem">確認</button></p>
+    <button onclick="def()">取消</button>
+    <button onclick="pay()">支付</button>
+    </div>
+    <script>
+        //點選支付按鈕跳出確認框，點選確認跳到驗證碼介面
+    window.onload = function(){
+        let passWordImg = document.getElementById("passWordImg");
+        let myInput = document.getElementById("myInput");
+        let a = changeBtn();
+        function changeBtn(){
+            let arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+            let word = "";
+                for(var i = 0; i < 6;i++){
+                    word += arr[Math.round(Math.random((15-0)+1)*15)];
+                }
+                passWordImg.innerText = word;
+            }
+        changeBtn()
+    
+        // 當點選看不清楚時，重新產生驗證碼
+        document.getElementById("change").addEventListener("click",changeBtn);
+
+        // 鍵入完驗證碼，進行比對，如果不符合要跳出驗證碼錯誤視窗
+        document.getElementById("CheckItem").addEventListener("click",function(){
+            if(passWordImg.innerText != myInput.value){
+                alert("驗證碼錯誤");
+                myInput.value = "";
+            }
+            else{
+                var payConfirm = confirm("確定要支付嗎?");
+                if(payConfirm){
+                    location.href = "./支付成功介面.html"
+                }
+            }
+        })
+    }
+
+        //點選取消按鈕返回購物商城
+        function def(){
+            location.href = "./購物商城.html"
+        }
+    </script>
+</body>
+</html>
