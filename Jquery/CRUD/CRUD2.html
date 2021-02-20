@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>新增、刪除、全選、顯示勾選項目</h1>
+    <input type="text" id="addInput"><button onclick="addItem()">新增</button>
+    <ul id="myUl">
+        <li><input type="checkbox" name="allCheck" onclick="allCheck(this)">全選</li>
+        <li><input type="checkbox" name="item" value="a1">a1<button onclick="xBtn(this)">X</button></li>
+        <li><input type="checkbox" name="item" value="a2">a2<button onclick="xBtn(this)">X</button></li>
+        <li><input type="checkbox" name="item" value="a3">a3<button onclick="xBtn(this)">X</button></li>
+    </ul>
+    <button onclick="showItem()">顯示勾選項目</button>
+
+    <script>
+    // 新增
+        function addItem(){
+            let addInput = document.getElementById("addInput");
+            let html = '<li><input type="checkbox" name="item" value="'+ addInput.value +'">'+ addInput.value +'<button onclick="xBtn(this)">X</button></li>'
+            let myUl = document.getElementById("myUl");
+            // 防呆：如果input有值才做新增，新增完清空input的文字
+            if(addInput.value != ""){
+                myUl.innerHTML = myUl.innerHTML + html;
+                addInput.value = "";
+            }
+        }
+    // 刪除
+        function xBtn(e){
+            e.parentNode.remove();
+        }
+
+    // 全選
+        function allCheck(e){
+            let item = document.getElementsByName("item");
+                for(var i = 0; i < item.length; i++){
+                    item[i].checked = e.checked;
+                }
+            }
+    // 顯示勾選項目
+        function showItem(){
+            let showItem = "";
+            let item = document.getElementsByName("item");
+            let checkItem = document.getElementsByName("item");
+            if(item.checked.length > 0){
+                showItem += item.values;
+            }
+            alert("勾選項目：" + item.value)
+        }
+    </script>
+</body>
+</html>
