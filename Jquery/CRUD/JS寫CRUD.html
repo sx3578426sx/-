@@ -45,11 +45,15 @@
         function showItem(){
             let showItem = "";
             let item = document.getElementsByName("item");
-            let checkItem = document.getElementsByName("item");
-            if(item.checked.length > 0){
-                showItem += item.values;
+            for(var j = 0;j < item.length; j++){
+                if(item[j].checked == true){
+                    showItem += item[j].value + "\n";
+                }else{
+                    alert("尚未勾選項目");
+                    break;
+                }
             }
-            alert("勾選項目：" + item.value)
+            alert("勾選項目：" + "\n" + showItem);
         }
     </script>
 </body>
