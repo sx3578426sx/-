@@ -4,34 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>牛仔褲</title>
+    <title>褲子</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style>
         #passWordImg{
             background-color: bisque;
-            width: 150px;
-            height: 50px;
+            width: 200px;
+            height: 200px;
             text-align:center;
             font-size: 32px;
         }
     </style>
 </head>
 <body>
-    <div>
-    <p>商品名稱：牛仔褲</p>
-    <p>價格：$300</p>
-    <p>內容：牛仔褲</p>
-    <p>產地：美國</p>
-    <p><span id="passWordImg">123456</span><button id="change">換一個驗證碼</button></p>
-    <p>請輸入驗證碼:<input type="text" name="enterWord" id="myInput"><button id="CheckItem">確認</button></p>
-    <button onclick="def()">取消</button>
-    <button onclick="pay()">支付</button>
+    <div class="card text-center">
+        <div class="card-header">
+            <h1>天天購物商城</h1>
+        </div>
+        <div class="card-body">
+            <p>商品名稱：褲子</p>
+            <p>價格：$300</p>
+            <p>內容：牛仔褲</p>
+            <p>產地：美國</p>
+        </div>
+        <div class="card-footer text-muted">
+            <p><span id="passWordImg">123456</span>&nbsp;<button id="change" class="btn btn-warning">換一個驗證碼</button></p>
+            <p>請輸入驗證碼:<input type="text" name="enterWord" id="myInput"></p>
+            <button id="pay" class="btn btn-lg btn-primary">支付</button>
+            <button onclick="def()" class="btn btn-secondary btn-lg">取消</button>
+        </div>
     </div>
     <script>
-        //點選支付按鈕跳出確認框，點選確認跳到驗證碼介面
     window.onload = function(){
         let passWordImg = document.getElementById("passWordImg");
         let myInput = document.getElementById("myInput");
-        let a = changeBtn();
+        // 設定驗證碼範圍
         function changeBtn(){
             let arr = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
             let word = "";
@@ -46,7 +55,7 @@
         document.getElementById("change").addEventListener("click",changeBtn);
 
         // 鍵入完驗證碼，進行比對，如果不符合要跳出驗證碼錯誤視窗
-        document.getElementById("CheckItem").addEventListener("click",function(){
+        document.getElementById("pay").addEventListener("click",function(){
             if(passWordImg.innerText != myInput.value){
                 alert("驗證碼錯誤");
                 myInput.value = "";
@@ -62,7 +71,7 @@
 
         //點選取消按鈕返回購物商城
         function def(){
-            location.href = "./購物商城.html"
+            location.href = "./購物商城(ajax請求).html"
         }
     </script>
 </body>

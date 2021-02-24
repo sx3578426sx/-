@@ -22,7 +22,7 @@
 <body>
     <div id="title">天天買購物商城</div>
     <br>
-    <div id="app"></div>
+    <div id="app" class="card-deck"></div>
 
     <script>
         $.ajax({
@@ -35,7 +35,10 @@
         // 成功取得回傳結果然後顯示在頁面上
             var html = "";
             for(var i = 0;i < data.length; i++){
-                html += '<button class="Btn" onclick="Btn('+ i +')">'+ data[i].商品名稱 +'<br>'+ data[i].價格 +'</button>'
+                html += '<div class="card" style="width: 18rem;">'
+                html += '<a class="Btn" onclick="Btn('+ i +')"><img src="../../HTML&CSS/PNG/'+ data[i].商品名稱 +'.png" class="card-img-top" alt="...">'
+                html += '<p class="card-text">'+ data[i].商品名稱 +'<br>'+ data[i].價格 +'</p></a>'
+                html += '</div>'
             }
             $("#app").html(html);
            },
