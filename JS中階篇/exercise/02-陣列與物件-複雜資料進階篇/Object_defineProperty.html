@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var user ={
+        name:"範例"
+       } ;
+       var count = 12;
+        //定義一個age 獲取值時返回定義好的變量count
+
+        //Object.defineProperty(obj, prop, descriptor)需要三個參數
+        // 1 object對象=>要在其上定義屬性的對象。
+        // 2 propName屬性名=>要定義或修改的屬性的名稱。【類型：String】
+        // 3 descriptor屬性描述=>將被定義或修改的屬性的描述符。【類型：Object】{get:function(){},set:function(){}}
+        // get 是獲取值的時候的方法，類型為 function ，獲取值的時候會被調用，不設置時為 undefined
+        // set 是設置值的時候的方法，類型為 function ，設置值的時候會被調用，undefined
+        // get或set不是必須成對出現，任寫其一就可以
+       Object.defineProperty(user,"age",{
+        get:function(){
+         console.log("GET");
+         return count;
+        },
+        set:function(newVal){
+         console.log("SET");
+         count=newVal+1;
+        }
+       })
+       console.log(user.age);//12
+       user.age=145;
+       console.log(user.age);//146
+       </script>
+</body>
+</html>
