@@ -28,19 +28,42 @@
     </div>
     <script>
         // 抓所有class，先宣告一個物件讓清單預設為關閉
-        var menu = document.getElementsByClassName('menu')[0];
-        var menuBtn = document.getElementsByClassName('menuBtn')[0];
-        var closeBtn = document.getElementsByClassName('closeBtn')[0];
-
-        // 監聽該物件的值改變時會做的事情
-        Object.defineProperty()
+        var menuBtn = document.getElementsByClassName("menuBtn")[0];
+        var menu = document.getElementsByClassName("menu")[0];
+        var closeBtn = document.getElementsByClassName("closeBtn")[0];
+        var data = {
+            isOpen: false
+        };
+        
+        // 監聽該物件data的值isOpen改變時會做的事情
         // GET:回傳物件
         // SET:物件=value;執行handClass函數
-
-        // handClass函數，用來控制開關，如果value是ture，menu新增class(open)，如果不是就移除
+        Object.defineProperty(data,"isOpen",{
+            get:function(){
+                return isOpen;
+            },
+            set:function(value){
+                isOpen = value;
+                handClass();
+            }
+        })
+        // handClass函數，用來控制開關，如果回傳ture，menu就新增class(open)，如果不是就移除
+        function handClass(){
+            if(data.isOpen){
+                menu.classList.add('open');
+            }
+            else{
+                menu.classList.remove('open');
+            }
+        }
         // ======================================================================
-        // 清單按鈕(true)跟關閉(close)按鈕加入點擊事件
-        
+        // 清單按鈕(true)跟關閉(close)按鈕加入點擊事件，分別改變data.isOpen的值
+        menuBtn.addEventListener("click",function(){
+            data.isOpen = true;
+        })
+        closeBtn.addEventListener("click",function(){
+            data.isOpen = false;
+        })
         // ======================================================================
         
         // 入門篇提到不透過Object.defineProperty的寫法如下
