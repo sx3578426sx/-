@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 宣告一個物件
+        var Parson = {
+            name:"mike",
+        };
+        // 監聽該物件的name值改變時會做的事情
+        Object.defineProperty(Parson, "name", {
+            get: function(){    // 取得 物件 的 value 時 呼叫該函式
+                console.log("GET");
+                return name;    // 不用寫Parson.name，直接寫data內的key即可
+            },
+            set: function(value){   // 改變了 物件 的 value 時 呼叫該函式
+                console.log("SET");
+                name = value;
+            }
+        })
+        console.log(Parson.name);   // 觸發get，因為Object.defineProperty會將value先全部清空，所以初值回傳為空白
+        Parson.name = "King";   // 觸發set，改變Parson內name的值
+        console.log(Parson.name);    // 觸發get，注意宣告時的初值不會被抓到，所以get前要先set一次
+
+
+        // 將上述拆出成一個共用function
+        function BindValue(obj, key, callBack) {
+            var val = obj[key]; // 取到該key的value
+
+            Object.defineProperty(obj, key, {
+                get: function () {
+                    return val;
+                },
+                set: function (value) {
+                    val = value;
+                    callBack(val);
+                },
+            });
+        }
+
+        // 使用
+        BindValue(obj, 'keyName', function (val) {
+            // callback
+            console.log(obj);
+            console.log(val);
+        });
+    </script>
+</body>
+</html>

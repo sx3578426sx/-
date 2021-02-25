@@ -8,33 +8,34 @@
 </head>
 <body>
     <script>
-    var user ={
-        name:"範例",
-        age:"21"
-       } ;
-       var count = 12;
-        //定義一個age 獲取值時返回定義好的變量count
+        // 語法格式
+        Object.defineProperty(物件, '物件內的KEY', {
+            get:function(){
+                // 取得 物件 的 value 時 呼叫該函式
+            }, 
+            set:function(value) {	// value:新賦予的值
+                // 改變了 物件 的 value 時 呼叫該函式
+            }
+        });
 
-        //Object.defineProperty(obj, prop, descriptor)需要三個參數
-        // 1 object對象=>要在其上定義屬性的對象。
-        // 2 propName屬性名=>要定義或修改的屬性的名稱。【類型：String】
-        // 3 descriptor屬性描述=>將被定義或修改的屬性的描述符。【類型：Object】{get:function(){},set:function(){}}
-        // get 是獲取值的時候的方法，類型為 function ，獲取值的時候會被調用，不設置時為 undefined
-        // set 是設置值的時候的方法，類型為 function ，設置值的時候會被調用，undefined
-        // get或set不是必須成對出現，任寫其一就可以
-       Object.defineProperty(user,"age",{
-        get:function(){
-         console.log("GET");
-         return count;
-        },
-        set:function(newVal){
-         console.log("SET");
-         count=newVal+1;
-        }
-       })
-       console.log(user.age);//12
-       user.age=145;
-       console.log(user.age);//146
-       </script>
+        // 範例
+        // 宣告一個物件
+        var data = {
+            isOpen: false,
+        };
+
+        // 監聽該物件的isOpen值改變時會做的事情
+        Object.defineProperty(data, 'isOpen', {
+            get: function () {	// 取得 物件 的 value 時 呼叫該函式
+                return isOpen;	// 不用寫data.isOpen，直接寫data內的key即可
+            },
+            set: function (value) {	// 改變了 物件 的 value 時 呼叫該函式
+                isOpen = value;
+            },
+        });
+
+        data.isOpen = true;	// 觸發set
+        console.log(data.isOpen);	// 觸發get，注意宣告時的初值不會被抓到，所以get前要先set一次
+    </script>
 </body>
 </html>

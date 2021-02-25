@@ -27,25 +27,24 @@
         </div>
     </div>
     <script>
-        // 抓所有class，然後var data={isMenuOpen: false,}，表示清單預設為關閉
-
-        // Object.defineProperty需要三個參數
-        // 1 object對象=>給誰加
-        // 2 propName屬性名=>要加的屬性的名字【類型：String】
-        // 3 descriptor屬性描述=>加的這個屬性有什麼樣的特性【類型：Object】
-        // get 是獲取值的時候的方法，類型為 function ，獲取值的時候會被調用，不設置時為 undefined
-        // set 是設置值的時候的方法，類型為 function ，設置值的時候會被調用，undefined
-        // get或set不是必須成對出現，任寫其一就可以
-            
+        // 抓所有class，先宣告一個物件讓清單預設為關閉
         var menu = document.getElementsByClassName('menu')[0];
         var menuBtn = document.getElementsByClassName('menuBtn')[0];
         var closeBtn = document.getElementsByClassName('closeBtn')[0];
-        menuBtn.addEventListener('click', function(){
-            menu.classList.add('open');
-        })
-        closeBtn.addEventListener('click', function(){
-            menu.classList.remove('open');
-        })
+
+        // 監聽該物件的值改變時會做的事情
+        Object.defineProperty()
+        // 取得 物件 的 value 時 呼叫該函式
+        // 改變了 物件 的 value 時 呼叫該函式
+
+        
+
+        // menuBtn.addEventListener('click', function(){
+        //     menu.classList.add('open');
+        // })
+        // closeBtn.addEventListener('click', function(){
+        //     menu.classList.remove('open');
+        // })
     </script>
 </body>
 </html>

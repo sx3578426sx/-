@@ -13,20 +13,14 @@
     <button id="btn">點我拿資料</button>
 
     <script>
+        // - this：指的是觸發該事件的元素，注意在event function外用this的話會抓到window(也就是整個瀏覽器最上層物件)
+        // - e：指的是和該觸發事件相關的所有資訊
         var btn = document.getElementById("btn");
-        btn.addEventListener("click",function(e){
-            console.log(e.target)
+        btn.addEventListener("click",function(e){   // e:不一定要叫e，但一定要放在第一個
+            console.log(this);	// 指的是觸發該事件的元素
+            console.log(e);	// 指的是和該觸發事件相關的所有資訊，例如滑鼠點擊座標、觸發該事件的元素等
+            console.log(e.target);	// 取得觸發該事件的元素
         })
-
-        function Data(i, j){
-            return i + j;
-        }
-        console.log(Data(1,3));
-        console.log(Data(122,3));
-        console.log(Data(2,3));
-        
-        
-
     </script>
     
 </body>

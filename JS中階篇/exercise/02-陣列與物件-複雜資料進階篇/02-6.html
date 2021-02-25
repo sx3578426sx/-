@@ -8,9 +8,32 @@
 </head>
 <body>
     <script>
+    // 陣列裡的參數必須是相同類型
+    var arr = ["Value","Mike","22000"];
     
-      
+    // 物件基本格式
+    var obj = {
+        key: "value",
+        name: "mike",
+        salary: "22000",
+    };
 
+    // 兩種取值方式
+    obj.name;	// 常用
+    obj["name"];	// 適合動態取值，同下
+    var test = "name";
+    obj[test];
+
+    // 兩種設定新key方式，直接指定新key然後賦值
+    obj.sex = "girl";
+    obj["sex"] = "girl";	// 適合動態生成key時用
+      
+    // 陣列包物件
+    var arrObj = [
+        {key: "value"},
+        {name: "mike"},
+        {salary: "22000"}
+    ];
     </script>
 </body>
 </html>

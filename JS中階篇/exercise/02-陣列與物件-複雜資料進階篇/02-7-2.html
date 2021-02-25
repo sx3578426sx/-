@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function的回傳</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/02-5.css">
+</head>
+<body>
+    <ul>
+        <li>當在function內用return，則程式就會返回停止，不會再繼續執行了</li>
+        <li>注意return只能在function內部使用</li>
+        <li>打開console看結果</li>
+    </ul>
+    <script>
+        window.onload = function () {
+            console.log(1);
+            console.log(1);
+            console.log(1);
+            console.log(1);
+            return;	// 該函式return以下的程式碼都不會繼續執行
+            console.log(1);
+            console.log(1);
+            console.log(1);
+        };
+    </script>
+    
+</body>
+</html>
