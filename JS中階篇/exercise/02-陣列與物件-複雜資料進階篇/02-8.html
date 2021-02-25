@@ -34,11 +34,16 @@
 
         // 監聽該物件的值改變時會做的事情
         Object.defineProperty()
-        // 取得 物件 的 value 時 呼叫該函式
-        // 改變了 物件 的 value 時 呼叫該函式
+        // GET:回傳物件
+        // SET:物件=value;執行handClass函數
 
+        // handClass函數，用來控制開關，如果value是ture，menu新增class(open)，如果不是就移除
+        // ======================================================================
+        // 清單按鈕(true)跟關閉(close)按鈕加入點擊事件
         
-
+        // ======================================================================
+        
+        // 入門篇提到不透過Object.defineProperty的寫法如下
         // menuBtn.addEventListener('click', function(){
         //     menu.classList.add('open');
         // })
