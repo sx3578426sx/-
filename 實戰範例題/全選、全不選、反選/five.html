@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>five</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+    <h1>全選、全不選、反選</h1>
+    <input type="text" id="addInput"><button onclick="addBtn()">ADD</button>
+    <ul id="myUl">
+        <li><input type="checkbox" name="myCheck" value="a1">a1<button onclick="Xbtn(this)">X</button></li>
+        <li><input type="checkbox" name="myCheck" value="a2">a2<button onclick="Xbtn(this)">X</button></li>
+        <li><input type="checkbox" name="myCheck" value="a3">a3<button onclick="Xbtn(this)">X</button></li>
+        <li><input type="checkbox" name="myCheck" value="a4">a4<button onclick="Xbtn(this)">X</button></li>
+        <li><input type="checkbox" name="myCheck" value="a5">a5<button onclick="Xbtn(this)">X</button></li>
+    </ul>
+    <button onclick="checkBtn(0)">全選</button>
+    <button onclick="checkBtn(1)">全不選</button>
+    <button onclick="checkBtn(2)">反選</button>
+
+    <script>
+        // TODO:點選新增按鈕，如果輸入框有值，新增項目並清空輸入框，如果沒值則跳出"尚未輸入項目名稱"
+        let addInput = $("#addInput").val();
+        let html = '<li><input type="checkbox" name="myCheck" value='+ addInput +'>'+ addInput +'<button onclick="Xbtn(this)">X</button></li>';
+        let myUl = $("#myUl").html;
+        const addBtn = e => {
+            if(addInput){
+                $("#myUl").html(myUl + html);
+                $("#addInput").val("");
+            }
+        }
+        // TODO:點選X按鈕，刪除該項
+            const Xbtn = e => {
+                $(e).parent().remove();
+            }
+        // TODO:點選全選按鈕，目前有的項目都會被選
+
+        // TODO:全不選，取消全部選取
+
+        // TODO:反選，將項目反向選取
+    </script>
+</body>
+</html>
