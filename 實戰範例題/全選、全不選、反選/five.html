@@ -25,24 +25,37 @@
 
     <script>
         // TODO:點選新增按鈕，如果輸入框有值，新增項目並清空輸入框，如果沒值則跳出"尚未輸入項目名稱"
-        let addInput = $("#addInput").val();
-        let html = '<li><input type="checkbox" name="myCheck" value='+ addInput +'>'+ addInput +'<button onclick="Xbtn(this)">X</button></li>';
-        let myUl = $("#myUl").html;
-        const addBtn = e => {
+        const addBtn = () => {
+            let addInput = $("#addInput").val();
+            let html = '<li><input type="checkbox" name="myCheck" value='+ addInput +'>'+ addInput +'<button onclick="Xbtn(this)">X</button></li>';
+            let myUl = $("#myUl").html();
             if(addInput){
                 $("#myUl").html(myUl + html);
                 $("#addInput").val("");
             }
+
         }
         // TODO:點選X按鈕，刪除該項
             const Xbtn = e => {
                 $(e).parent().remove();
             }
         // TODO:點選全選按鈕，目前有的項目都會被選
-
         // TODO:全不選，取消全部選取
-
         // TODO:反選，將項目反向選取
+            const checkBtn = num => {
+                let myCheck = document.getElementsByName("myCheck");
+                for(i = 0; i < myCheck.length; i++){
+                    if(num == 0){
+                        $(myCheck[i]).prop('checked',true);
+                    }
+                    else if(num == 1){
+                        $(myCheck[i]).prop('checked',false);
+                    }
+                    else if(num == 2){
+                        myCheck[i].checked = !myCheck[i].checked;
+                    }
+                }
+            }
     </script>
 </body>
 </html>
