@@ -10,52 +10,52 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-    <h1>全選、全不選、反選</h1>
+    <h1>第五次</h1>
     <input type="text" id="addInput"><button onclick="addBtn()">ADD</button>
-    <ul id="myUl">
-        <li><input type="checkbox" name="myCheck" value="a1">a1<button onclick="Xbtn(this)">X</button></li>
-        <li><input type="checkbox" name="myCheck" value="a2">a2<button onclick="Xbtn(this)">X</button></li>
-        <li><input type="checkbox" name="myCheck" value="a3">a3<button onclick="Xbtn(this)">X</button></li>
-        <li><input type="checkbox" name="myCheck" value="a4">a4<button onclick="Xbtn(this)">X</button></li>
-        <li><input type="checkbox" name="myCheck" value="a5">a5<button onclick="Xbtn(this)">X</button></li>
+    <ul>
+        <li><input type="checkbox" name="myCheck" value="a1">a1<button onclick="xBtn(this)">X</button></li>
+        <li><input type="checkbox" name="myCheck" value="a2">a2<button onclick="xBtn(this)">X</button></li>
+        <li><input type="checkbox" name="myCheck" value="a3">a3<button onclick="xBtn(this)">X</button></li>
     </ul>
+
     <button onclick="checkBtn(0)">全選</button>
     <button onclick="checkBtn(1)">全不選</button>
     <button onclick="checkBtn(2)">反選</button>
 
     <script>
         // TODO:點選新增按鈕，如果輸入框有值，新增項目並清空輸入框，如果沒值則跳出"尚未輸入項目名稱"
-        const addBtn = () => {
-            let addInput = $("#addInput").val();
-            let html = '<li><input type="checkbox" name="myCheck" value='+ addInput +'>'+ addInput +'<button onclick="Xbtn(this)">X</button></li>';
-            let myUl = $("#myUl").html();
-            if(addInput){
-                $("#myUl").html(myUl + html);
-                $("#addInput").val("");
+            const addBtn = () =>{
+                let addInput = $("#addInput").val();
+                let html = '<li><input type="checkbox" name="myCheck" value="'+ addInput +'">'+ addInput +'<button onclick="xBtn(this)">X</button></li>';
+                let myUl = $("ul").html();
+                if(addInput){
+                    $("ul").html(myUl + html);
+                    $("#addInput").val("");
+                }
             }
-
-        }
         // TODO:點選X按鈕，刪除該項
-            const Xbtn = e => {
+            const xBtn = e =>{
                 $(e).parent().remove();
             }
         // TODO:點選全選按鈕，目前有的項目都會被選
         // TODO:全不選，取消全部選取
         // TODO:反選，將項目反向選取
-            const checkBtn = num => {
-                let myCheck = document.getElementsByName("myCheck");
-                for(i = 0; i < myCheck.length; i++){
-                    if(num == 0){
-                        $(myCheck[i]).prop('checked',true);
-                    }
-                    else if(num == 1){
-                        $(myCheck[i]).prop('checked',false);
-                    }
-                    else if(num == 2){
-                        myCheck[i].checked = !myCheck[i].checked;
-                    }
+
+        const checkBtn = num => {
+            let myCheck = $('[name="myCheck"]');
+            for(let i = 0; i < myCheck.length; i++){
+                if(num == 0){
+                    $(myCheck[i]).prop("checked", true);
+                }
+                else if(num == 1){
+                    $(myCheck[i]).prop("checked", false);
+                }
+                else if(num == 2){
+                    myCheck[i].checked = !myCheck[i].checked;
                 }
             }
+        }
+           
     </script>
 </body>
 </html>
