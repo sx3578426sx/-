@@ -17,38 +17,41 @@
     <script>
     // 用ajax呼叫API(https://run.mocky.io/v3/c8c6ed5f-7804-493e-9e78-09cd612fda16)
         $.ajax({
-            type: "GET",
+            data: "GET",
             url: "https://run.mocky.io/v3/c8c6ed5f-7804-493e-9e78-09cd612fda16",
             dataType: "json",
+            // 成功取得回傳結果
+            success: ((data,textStatus,jqXHR) => {
+                console.log("success");
+                //    console.log("data:" + data);
+                //    console.log("textStatus:" + textStatus);
+                //    console.log("jqXHR:" + jqXHR);
+            // 取得回傳結果然後顯示在頁面上
+                let html = "";
+                for(let i = 0; i < data.length; i++){
+                    html += "<li>" + data[i].strText + "</li>";
+                }
+                document.getElementById("myData").innerHTML = html;
+            }),
+            
+            // 呼叫API失敗會回傳的值
+            error: ((jqXHR, textStatus, errorThrown) => {
+                console.log("失敗")
+                //    console.log("jqXHR:" + jqXHR);
+                //    console.log("textStatus:" + textStatus);
+                //    console.log("errorThrow:" + errorThrow);
+            }),
+            
+            
+            // 不管成功或失敗都會顯示的值
+            complete: ((jqXHR, textStatus) => {
+                console.log("complete");
+                // console.log("jqXHR:" + jqXHR);
+                // console.log("textStatus:" + textStatus);
+            })
+        })
         
-        // 成功取得回傳結果然後顯示在頁面上
-           success:function(data, textStatus, jqXHR){
-               console.log("SUCCESS");
-            //    console.log("data:" + data);
-            //    console.log("textStatus:" + textStatus);
-            //    console.log("jqXHR:" + jqXHR);
-            var html = "";
-            for(var i = 0;i < data.length; i++){
-                html += '<li>'+ data[i].strText +'</li>'
-            }
-            $("#myData").html(html);
-           },
-
-        // 呼叫API失敗會回傳的值
-           error: function(jqXHR, textStatus, errorThrow){
-               console.log("ERROR");
-            //    console.log("jqXHR:" + jqXHR);
-            //    console.log("textStatus:" + textStatus);
-            //    console.log("errorThrow:" + errorThrow);
-           },
-
-        // 不管成功或失敗都會顯示的值
-          complete: function(jqXHR,textStatus){
-            console.log("COMPLETE")
-            // console.log("jqXHR:" + jqXHR);
-            // console.log("textStatus:" + textStatus);
-          }
-        })  
+          
     </script>
 </body>
 </html>
