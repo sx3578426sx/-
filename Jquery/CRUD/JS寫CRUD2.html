@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>新增、刪除、全選、顯示勾選項目</h1>
+    <input type="text" id="addInput"><button onclick="addItem()">新增</button>
+    <ul id="myUl">
+        <li><input type="checkbox" name="allCheck" onclick="allCheck(this)">全選</li>
+        <li><input type="checkbox" name="item" value="a1">a1<button onclick="xBtn(this)">X</button></li>
+        <li><input type="checkbox" name="item" value="a2">a2<button onclick="xBtn(this)">X</button></li>
+        <li><input type="checkbox" name="item" value="a3">a3<button onclick="xBtn(this)">X</button></li>
+    </ul>
+    <button onclick="showItem()">顯示勾選項目</button>
+
+    <script>
+    // 新增
+    const addItem = () => {
+        let addInput = document.getElementById("addInput").value;
+        let html = '<li><input type="checkbox" name="item" value="'+ addInput +'">'+ addInput +'<button onclick="xBtn(this)">X</button></li>';
+        let myUl = document.getElementById("myUl").innerHTML;
+        // 防呆：如果input有值才做新增，新增完清空input的文字
+        if(addInput){
+            document.getElementById("myUl").innerHTML += html
+            document.getElementById("addInput").value = "";
+        }
+    }
+            
+    // 刪除
+    const xBtn = (e) => {
+        e.parentNode.remove();
+    }
+
+    // 全選
+    const allCheck = () => {
+        let allCheck = document.getElementsByName('allCheck');
+        let item = document.getElementsByName('item');
+        if(allCheck.checked){
+            for(let i = 0; i < item.length; i++){
+                item[i].checked;
+            }
+        }
+    }
+    // 顯示勾選項目
+        
+    </script>
+</body>
+</html>
