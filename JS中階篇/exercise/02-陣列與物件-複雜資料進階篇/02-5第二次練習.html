@@ -79,20 +79,20 @@
         }
 
         // 先抓所有實體、html放""、頁面預設畫面放線上課程
-        let html = "";
         let seach = document.getElementsByClassName('seach')[0];
         let seach_list = document.getElementsByClassName('seach_list')[0];
-        let tag = document.getElementsByClassName("tag");
+        let tag = document.getElementsByClassName('tag');
+        let html = '';
         let seachObj = seachData['線上課程'];
         
         // 用for迴圈將tag標籤加入點擊事件(seachTag)
         for(let i = 0; i < tag.length; i++){
-            tag[i].addEventListener("click",seachTag);
+            tag[i].addEventListener("click", seachTag);
         }
         
-        // DOMrender的函式，先清空html跟seach_list
+        // DOMrender的函式，先清空html跟seach_list.innerHTML
         // 然後seachArr資料拿來跑for迴圈，組新的html模板，將html加到seach_list的HTML動元素裡
-        function DOMrender(){
+        function DOMrander(){
             html = '';
             seach_list.innerHTML = '';
             for(let j = 0; j < seachObj.length; j++){
@@ -106,24 +106,22 @@
         }
 
         // seachTag的函式，點擊頁面上關鍵字，變更搜尋內容及搜尋框的文字，並且每次都會執行DOMrender函式
-        function seachTag() {
-            seach.value = this.innerText;
+        function seachTag(){
             seachObj = seachData[this.innerText];
-            DOMrender();
+            seach.value = this.innerText;
+            DOMrander();
         }
         // 搜尋框加入鍵盤事件('keyup')，匿名函式撈出seachData即時表單當下所存放的value存放在seachArr裡，
         // 當seachArr裡的字被刪掉，就會拿來跟seachData的value去做比較，長度不相同value回傳給seachArr會報undefined，
         // 如果seachArr等於undefined，就強制將seachArr轉為空陣列[]；
-        seach.addEventListener("keyup", function(){
-            seachObj = seachData.value;
-            if(seachData === undefined){
-                seachObj = [];
-            }
-        })
-
+        seach.addEventListener("keyup",function(){
+           seachObj = seachData.value;
+           if(seachData == undefined){
+               seachObj = [];
+           }
+       })
         // 當資料撈完後要再執行一次DOMrender
-        DOMrender();
-
+        DOMrander();
     </script>
 </body>
 </html>
