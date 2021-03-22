@@ -85,7 +85,7 @@
         var html = "";
 
 
-        // DOM 元素的操作
+        // DOM 元素的操作 DOMrender
         function DOMrender(){
             html = '';
             seach_list.innerHTML = '';
@@ -104,7 +104,7 @@
             tag[s].addEventListener("click", seachTagChange)
         }
 
-        // 更改點到的資料
+        // 更改點到的資料 seachTagChange
         function seachTagChange(){
             seachObj = seachData[this.innerText];
             seach.value = this.innerText;
