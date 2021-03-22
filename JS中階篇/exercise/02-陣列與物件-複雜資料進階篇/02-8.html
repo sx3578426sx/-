@@ -32,23 +32,23 @@
         let menu = document.getElementsByClassName("menu")[0];
         let closeBtn = document.getElementsByClassName("closeBtn")[0];
         let data = {
-            isOpen: false
+            isMenuOpen: false,
         }
         // 監聽該物件data的值isOpen改變時會做的事情
         // GET:回傳物件
         // SET:物件=value;執行handClass函數
-        Object.defineProperty(data,"isOpen",{
+        Object.defineProperty(data,'isMenuOpen',{
             get: function(){
-                return isOpen
+                return isMenuOpen;
             },
             set: function(value){
-                isOpen = value;
+                isMenuOpen = value;
                 handClass();
             }
         })
         // handClass函數，用來控制開關，如果回傳ture，menu就新增class(open)，如果不是就移除
-        function handClass(){
-            if(data.isOpen){
+        const handClass = () =>{
+            if(data.isMenuOpen){
                 menu.classList.add('open');
             }
             else{
@@ -57,11 +57,11 @@
         }
         // ======================================================================
         // 清單按鈕(true)跟關閉(close)按鈕加入點擊事件，分別改變data.isOpen的值
-        menuBtn.addEventListener("click", function(){
-            data.isOpen = true;
+        menuBtn.addEventListener("click",function(){
+            data.isMenuOpen = true;
         })
-        closeBtn.addEventListener("click", function(){
-            data.isOpen = false;
+        closeBtn.addEventListener("click",function(){
+            data.isMenuOpen = false;
         })
         // ======================================================================
         
