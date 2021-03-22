@@ -36,17 +36,27 @@
     }
 
     // 全選
-    const allCheck = () => {
-        let allCheck = document.getElementsByName('allCheck');
+    const allCheck = (e) => {
         let item = document.getElementsByName('item');
-        if(allCheck.checked){
             for(let i = 0; i < item.length; i++){
-                item[i].checked;
+                item[i].checked = e.checked;
+            }
+    }
+
+    // 顯示勾選項目
+    const showItem = () => {
+        let showItem = "";
+        let item = document.getElementsByName('item');
+        for(let j = 0; j < item.length; j++){
+            if(item[j].checked == true){
+                showItem += item[j].value + "\n";
+            }
+            else{
+                return alert("尚未勾取項目");
             }
         }
+        alert(showItem);
     }
-    // 顯示勾選項目
-        
     </script>
 </body>
 </html>
