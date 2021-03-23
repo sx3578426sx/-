@@ -13,10 +13,10 @@
     <div class="mid">
         <input class="seach" type="text" value="線上課程">
         <p>最近熱門搜尋:  
-            <a class="tag" href="javascript:;" target="_blank">媽祖</a>、
-            <a class="tag" href="javascript:;" target="_blank">地震</a>、
-            <a class="tag" href="javascript:;" target="_blank">館長</a>、
-            <a class="tag" href="javascript:;" target="_blank">線上課程</a>
+            <a class="tag" href="javascript:;" >媽祖</a>、
+            <a class="tag" href="javascript:;" >地震</a>、
+            <a class="tag" href="javascript:;" >館長</a>、
+            <a class="tag" href="javascript:;" >線上課程</a>
         </p>
         <div class="seach_list">
             <!-- <div class="item">
@@ -79,22 +79,59 @@
         }
 
         // 抓動元素,html="",創立一個物件，項目放空arr;
-        
+        let seach = document.getElementsByClassName("seach")[0];
+        let seach_list = document.getElementsByClassName("seach_list")[0];
+        let tag = document.getElementsByClassName("tag");
+        let html = '';
+        let seachObj = {
+            item: [],
+        }
         // 監視物件內的項目
         // get:回傳項目,
         // set:執行DOMrender函數，參數內放value
-
-        // DOM 元素的操作
-
+        Object.defineProperty(seachObj, 'item', {
+            get: function(){
+                return item;
+            },
+            set: function(value){
+                DOMrender(value);
+            }
+        })
+        // DOMrender的函式，參數為value，創立step變數=value，若value為undefined，step回傳空arr
+        // 先清空組好的html跟seach_list的HTML動元素，
+        // for迴圈，組成新的html模板，因為有多行，所以每行開頭都是html += "..."
+        // 將html加到seach_list的HTML動元素裡
+        function DOMrender(value){
+            let step = value;
+            if(value == undefined){
+                step = [];
+            }
+            html = '';
+            seach_list.innerHTML = '';
+            for(let j = 0; j < step.length; j++){
+                html += '<div class="item">'
+                html += '<a href="javascript:;"  "target="_blank" class="title">'+ step[j].title +'</a>'
+                html += '<a href="'+ step[j].link +'" "target="_blank"  class="link">'+ step[j].link +'</a>'
+                html += '<p>'+ step[j].text +'</p>'
+                html += '</div>'
+            }
+            seach_list.innerHTML = html;
+        }
         //點擊tag標籤，執行seachTagChange函數
-
-        //更改點到的資料，讓項目欄位、搜尋框隨點到的文字變更
-
+        for(let i = 0; i < tag.length; i++){
+            tag[i].addEventListener("click", seachTagChange)
+        }
+        //更改點到的資料，讓項目欄位、搜尋框的值，隨點到的文字變更
+        function seachTagChange(){
+            seachObj.item = seachData[this.innerText];
+            seach.value = this.innerText;
+        }
         //搜尋框鍵盤事件
-
-        // 初始化執行
-
-        
+        seach.addEventListener("keyup", function(){
+            seachObj.item = seachData[this.value];
+        })
+        // 項目初始化執行
+        seachObj.item = seachData['線上課程'];
     
     </script>
 </body>
