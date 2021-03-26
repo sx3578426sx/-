@@ -97,23 +97,24 @@
                 DOMrender(value);
             }
         })
-        // DOMrender的函式，參數為value，創立step變數=value，若value為undefined，step回傳空arr
-        // 先清空組好的html跟seach_list的HTML動元素，
+        // DOMrender的函式，依照點到的資料，變更搜尋框下的文字框
+        // 參數為value，創立step變數=value，若value為undefined，step回傳空arr
+        // 避免文字框疊加，先清空組好的html跟seach_list的HTML動元素
         // for迴圈，組成新的html模板，因為有多行，所以每行開頭都是html += "..."
-        // 將html加到seach_list的HTML動元素裡
+        // seach_list的HTML動元素=組好的文字框(html)
         function DOMrender(value){
             let step = value;
-            if(value == undefined){
+            if(value === undefined){
                 step = [];
             }
             html = '';
-            seach_list.innerHTML = '';
+            seach_list.innerHTML = html;
             for(let j = 0; j < step.length; j++){
-                html += '<div class="item">'
-                html += '<a href="javascript:;"  "target="_blank" class="title">'+ step[j].title +'</a>'
-                html += '<a href="'+ step[j].link +'" "target="_blank"  class="link">'+ step[j].link +'</a>'
-                html += '<p>'+ step[j].text +'</p>'
-                html += '</div>'
+                html += '<div class="item">';
+                html += '<a href="javascript:; class="title">' + step[j].title + '</a>';
+                html += '<a href="' + step[j].link + '" class="link">' + step[j].link + '</a>';
+                html += '<p>' + step[j].text + '</p>';
+                html += '</div>';
             }
             seach_list.innerHTML = html;
         }
