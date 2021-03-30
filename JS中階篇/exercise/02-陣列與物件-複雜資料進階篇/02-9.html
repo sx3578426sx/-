@@ -26,6 +26,8 @@
             </div> -->
         </div>
     </div>
+    
+    
     <script>
         var seachData = {
             "媽祖":[
@@ -82,14 +84,14 @@
         let seach = document.getElementsByClassName("seach")[0];
         let seach_list = document.getElementsByClassName("seach_list")[0];
         let tag = document.getElementsByClassName("tag");
-        let html = '';
-        let seachObj = {
-            item: [],
+        let html = "";
+        let data = {
+            item: []
         }
         // 監視物件內的項目
         // get:回傳項目,
         // set:執行DOMrender函數，參數內放value
-        Object.defineProperty(seachObj, 'item', {
+        Object.defineProperty(data, "item", {
             get: function(){
                 return item;
             },
@@ -106,34 +108,38 @@
             let step = value;
             if(value === undefined){
                 step = [];
-            }
-            html = '';
-            seach_list.innerHTML = html;
-            for(let j = 0; j < step.length; j++){
+            };
+            html = "";
+            seach_list.innerHTML = "";
+            for(let i = 0; i < step.length; i++){
                 html += '<div class="item">';
-                html += '<a href="javascript:; class="title">' + step[j].title + '</a>';
-                html += '<a href="' + step[j].link + '" class="link">' + step[j].link + '</a>';
-                html += '<p>' + step[j].text + '</p>';
+                html += '<a href="javascript:;" class="title">'+ step[i].title +'</a>'
+                html += '<a href="'+ step[i].link +'" class="link">'+ step[i].link +'</a>'
+                html += '<p class="text">'+ step[i].text +'</p>'
                 html += '</div>';
             }
             seach_list.innerHTML = html;
         }
         //點擊tag標籤，執行seachTagChange函數
-        for(let i = 0; i < tag.length; i++){
-            tag[i].addEventListener("click", seachTagChange)
-        }
+            for(let j = 0;j < tag.length; j++){
+                tag[j].addEventListener("click", seachTagChange);
+            }
+
         //更改點到的資料，讓項目欄位、搜尋框的值，隨點到的文字變更
         function seachTagChange(){
-            seachObj.item = seachData[this.innerText];
+            data.item = seachData[this.innerText];
             seach.value = this.innerText;
         }
+        DOMrender();
+
         //搜尋框鍵盤事件
         seach.addEventListener("keyup", function(){
-            seachObj.item = seachData[this.value];
+            data = seachData[this.value];
         })
+            
         // 項目初始化執行
-        seachObj.item = seachData['線上課程'];
-    
+        data.item = seachData["線上課程"];
+        
     </script>
 </body>
 </html>
