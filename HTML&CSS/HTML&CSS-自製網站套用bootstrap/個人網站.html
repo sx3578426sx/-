@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)file:///C:/Users/z8517/Downloads/%E7%B6%B2%E9%A0%81%E7%B7%B4%E7%BF%92.html# -->
+<html><head>
+    <title>自製網站練習</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <style>
+        a:link{
+            color:blue;
+        }
+        a:visited{
+            color: black;
+        }
+        .web-header{
+            background-color: rgb(245, 143, 112);
+            color: black;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 20px 0;
+            border: 5px dotted blanchedalmond; 
+        }
+
+        .web-content{
+            background-color:rgb(246, 247, 216);
+            text-align: center;
+            font-size: 18px;
+            border: 10px dotted rgb(252, 203, 130);
+        }
+        .web-content table{
+            border-collapse: collapse;
+            margin: auto;
+        }
+        .web-content th,tr,td{
+            border: 1px solid black;
+            align-content: center;
+            padding: 10px;
+        }
+
+        .web-side{
+            background-color: rgb(193, 235, 188);
+            font-size: 18px;
+            text-align: center;
+            border: 10px dotted rgb(252, 203, 130); 
+        }
+        .web-side ol,ul{
+            margin-left: 35%;
+            text-align: left;
+        }
+
+        #img-YJ{
+            border: 5px solid blanchedalmond;
+            width: 60%;
+            height: auto;
+        }
+
+        .footer{
+            background-color: rgb(255, 78, 72);
+            color: rgb(85, 1, 85);
+            padding: 30px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .footer a{
+            word-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid web">
+        <div class="row">
+            <div class="web-header col-12 col-md-12">
+                <h1>游謹後援會報名網站</h1>
+            </div>
+            <div class="web-content col-12 col-md-8">
+            <form method="POST">
+                <fieldset>
+                    <legend>會員資料</legend>
+                    
+                    <label for="name">姓名：</label>
+                    <input type="text" id="name" name="name" placeholder="請填入姓名" required="">
+                    <br />
+                    <label>　性別：</label>
+                    <input type="radio" id="Male" name="gender" value="男">
+                    <label for="Male">男</label>
+                    <input type="radio" id="Female" name="gender" value="女">
+                    <label for="Female">女</label><br />
+
+                    <label>興趣：</label>
+                    <input type="checkbox" id="WatchVideo" name="interset" value="看影片">
+                    <label for="WatchVideo">看影片</label>
+                    <input type="checkbox" id="Sign" name="interset" value="唱歌">
+                    <label for="Sign">唱歌</label>
+                    <input type="checkbox" id="AteFood" name="interset" value="吃美食">
+                    <label for="AteFood">吃美食</label>
+                    <br />
+                    <input type="checkbox" id="Sport" name="interset" value="運動">
+                    <label for="Sport">運動</label>
+                    <input type="checkbox" id="PlayGame" name="interset" value="電玩">
+                    <label for="PlayGame">電玩</label>
+                    <input type="checkbox" id="Cook" name="interset" value="做菜">
+                    <label for="PlayGame">做菜</label><br><br>
+                    
+                    <label>帳號：</label>
+                    <input type="email" id="user" name="user" placeholder="請輸入信箱帳號" required=""><br>
+                    <label>密碼：</label>
+                    <input type="password" id="pwd" name="pwd" placeholder="請輸入8-14碼" maxlength="14" required=""><br><br>
+                    <label>照片：</label>
+                    <input type="file"><br><br>
+                    <label>生日：</label>
+                    <input type="date" id="birthday" name="birthday" min="1920-01-01" max="2020-01-01"><br><br>
+                    <label>辦理等級：</label>
+                    <select>
+                        <option>一般</option>
+                        <option>高級</option>
+                    </select><br><br>
+                    <input type="reset">
+                    <input type="submit" id="Submit" value="確認">
+                    
+                </fieldset>
+            </form>
+                <br>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>編號</th>
+                            <th>辦理等級</th>
+                            <th>姓名</th>
+                            <th>性別</th>
+                            <th>興趣</th>
+                            <th>年齡</th>
+                        </tr>
+                        <tr>
+                            <td>A0001</td>
+                            <td>高級</td>
+                            <td>貝克漢</td>
+                            <td>男</td>
+                            <td>打籃球、吃美食</td>
+                            <td>30歲</td>
+                        </tr>
+                        <tr>
+                            <td>A0002</td>
+                            <td>高級</td>
+                            <td>楊丞琳</td>
+                            <td>女</td>
+                            <td>唱歌、吃美食</td>
+                            <td>30歲</td>
+                        </tr>
+                        <tr>
+                            <td>A0003</td>
+                            <td>一般</td>
+                            <td>蔡英文</td>
+                            <td>女</td>
+                            <td>看影片、吃美食</td>
+                            <td>18歲</td>
+                        </tr>
+                            <tr>
+                            <td>A0004</td>
+                            <td>一般</td>
+                            <td>安莉</td>
+                            <td>女</td>
+                            <td>電玩、唱歌</td>
+                            <td>17歲</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="web-side col-12 col-md-4">
+                <img id="img-YJ" src="./圖片.jpg" alt="作者生活照"><br>
+                <strong>作者：游謹</strong><br>
+                <i>悠閒的午後，享受美好的一天！</i><br>
+                <br>
+                <hr>
+                <br>
+                <ol>
+                    <b>喜歡做的事</b>
+                    <li>胡思亂想</li>
+                    <li>看影片</li>
+                    <li>吃美食</li>
+                    <li>逛街</li>
+                    <li>拍照</li>
+                </ol>
+
+                <br>
+                <ul>
+                    <b>相關設定</b>
+                    <li><a href="file:///C:/Users/z8517/Downloads/123" target="_blank">個人資料編輯</a></li>
+                    <li><a href="file:///C:/Users/z8517/Downloads/456" target="_blank">登出</a></li>
+                </ul>
+            </div>
+            <div class="footer col-12 col-md-12">         
+                    <b>關於我們</b>
+                    <h5>這個網站創立時間為2020年10月份！ 預祝我們聖誕節跟新年快樂～</h5>
+                    <a href="https://www.facebook.com/jin.yo.96?viewas=100000686899395&amp;privacy_source=timeline_gear_menu&amp;entry_point=action_bar#_" target="_blank">Facebook </a>
+                    <a href="https://www.instagram.com/you_jin_1013/?hl=zh-tw" target="_blank">Instagram </a>
+                    <a href="javascript:;">聯絡我們</a>
+            </div>
+        </div>
+    </div>
+
+</body></html>
