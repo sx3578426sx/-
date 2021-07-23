@@ -7,26 +7,29 @@
     <title>支付成功頁面</title>
 </head>
 <body>
+    <h1>支付完畢</h1>
+    <p><span id=timer></span>秒倒計時，倒數完畢立即返回首頁</p>
+    <button onclick="reBtn()">立即返回</button>
 
-    <!--倒數完畢返回首頁介面 -->
-    <h1 style="color: red; font-size: 2em;">支付完畢</h1>
-    <p><span id="time">5</span>秒倒計時，倒數完畢立即返回首頁</p>
-    <button id="nowReturn">立即返回</button>
     <script>
+    // 倒數完畢返回首頁介面
+        let idx = 5;
+        let timer = document.getElementById("timer");
+        timer.innerText = idx;
+        setInterval(() => {
+            idx--;
+            timer.innerText = idx;
+
     // 5s倒計時，倒數完畢返回首頁
-    var timer = 5;
-    setInterval(function(){
-        timer--;
-        document.getElementById("time").innerHTML = timer
-            if(timer == 0){
-            // location.href = "./購物商城(ajax請求).html";
-        }
-    },1000)
-    
+            if(timer.innerText == 0){
+                location.href = './購物商城(ajax請求).html';
+            }
+        },1000);
+
     // 支付成功頁面，點選立即返回，即返回首頁https://www.google.com/
-    document.getElementById("nowReturn").addEventListener("click",function(){
-        location.href = "./購物商城(ajax請求).html";
-    })
+        const reBtn = () => {
+            location.href = './購物商城(ajax請求).html';
+        }
     </script>
 </body>
 </html>
