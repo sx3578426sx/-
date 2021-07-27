@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習AJAX-標籤選單</title>
+    <script type="text/javascript">
+        function getData(PageName){
+            // XMLHttpRequest 物件專門用來和伺服器做連線
+            var req = new XMLHttpRequest();
+            req.open("get", "./"+ PageName +".html");
+            req.onload=function(){  // load 事件，偵測連線的狀態結束
+                //連線完成
+                var content = document.getElementById("content");
+                content.innerHTML = this.responseText;
+            };
+            req.send(); //送出連線
+        }
+    </script>
+</head>
+<body onclick="getData('news')">
+    <div>
+        <span onclick="getData('news')">最新</span>
+        <span onclick="getData('other')">其他</span>
+    </div>
+    <hr/>
+    <div id="content"></div>
+</body>
+</html>
